@@ -1,0 +1,50 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Button {
+    padding: 5px 15px;
+
+    cursor: pointer;
+    transition: all ease .2s;
+    text-align: center;
+
+    border: none;
+    border: 2px solid vars.$dark-white;
+    border-radius: vars.$border-radius;
+
+    font-weight: 500;
+
+    &_contained {
+        color: vars.$primary;
+        background-color: vars.$dark-white;
+    }
+
+    &_outlined {
+        color: vars.$dark-white;
+        background-color: vars.$primary;
+    }
+
+    @media (min-width: vars.$md) {
+        & {
+            transition: all ease .2s;
+        }
+
+        &_contained {
+            &:hover {
+                transition: all ease .2s;
+
+                color: vars.$dark-white;
+                border: 2px solid vars.$accent;
+                background-color: vars.$accent
+            }
+        }
+
+        &_outlined {
+            &:hover {
+                transition: all ease .2s;
+
+                color: vars.$primary;
+                background-color: vars.$dark-white
+            }
+        }
+    }
+}

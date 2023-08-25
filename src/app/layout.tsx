@@ -1,4 +1,5 @@
 import styles from './globals.module.scss';
+import '../scss/base/_reset.scss';
 import type { Metadata } from 'next';
 import ThemeRegistry from '@/theme/ThemeRegistry';
 
@@ -14,8 +15,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+      </head>
+
       <ThemeRegistry>
-        <body className={styles.Body}>{children}</body>
+        <body className={styles.Body}>
+          {/* Header */}
+          {children}
+          {/* Footer */}
+        </body>
       </ThemeRegistry>
     </html>
   );

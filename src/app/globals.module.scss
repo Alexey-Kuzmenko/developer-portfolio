@@ -1,6 +1,6 @@
 @use '../scss/utilities/variables' as vars;
 
 .Body {
-  background-color: vars.$primary;
   color: vars.$grey;
+  background-color: vars.$primary;
 }

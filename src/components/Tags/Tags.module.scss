@@ -1,0 +1,38 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Tag {
+    max-width: fit-content;
+    padding: 5px 10px;
+
+    cursor: default;
+
+    border-radius: vars.$border-radius;
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    &_blue {
+        color: vars.$accent;
+        background: rgba($color: vars.$accent, $alpha: 30%);
+    }
+
+    &_purple {
+        color: vars.$purple;
+        background: rgba($color: vars.$purple, $alpha: 30%);
+    }
+
+    &_ghost {
+        color: vars.$dark-white;
+        background: rgba($color: vars.$dark-white, $alpha: 30%);
+    }
+
+    &_yellow {
+        color: vars.$yellow;
+        background: rgba($color: vars.$yellow, $alpha: 30%);
+    }
+
+    &_pink {
+        color: vars.$pink;
+        background: rgba($color: vars.$pink, $alpha: 30%);
+    }
+}

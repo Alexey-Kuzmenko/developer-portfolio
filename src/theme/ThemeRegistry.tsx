@@ -1,8 +1,8 @@
 'use client';
 
-import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
-import { NextAppDirEmotionCacheProvider } from "./EmotionCache";
+import { createTheme, ThemeOptions, ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import { NextAppDirEmotionCacheProvider } from './EmotionCache';
 
 import { Nunito_Sans } from 'next/font/google';
 
