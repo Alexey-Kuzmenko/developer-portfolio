@@ -1,7 +1,11 @@
 import styles from './globals.module.scss';
 import '../scss/base/_reset.scss';
-import type { Metadata } from 'next';
+
 import ThemeRegistry from '@/theme/ThemeRegistry';
+import { Container } from '@/layout';
+
+import type { Metadata } from 'next';
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,7 +26,13 @@ export default function RootLayout({
       <ThemeRegistry>
         <body className={styles.Body}>
           {/* Header */}
-          {children}
+
+          <main>
+            <Container>
+              {children}
+            </Container>
+          </main>
+
           {/* Footer */}
         </body>
       </ThemeRegistry>
