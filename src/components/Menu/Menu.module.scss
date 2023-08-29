@@ -1,0 +1,94 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Menu {
+    height: min-content;
+    z-index: 3;
+
+    &__icon {
+        font-size: 1rem;
+        color: vars.$white;
+        cursor: pointer;
+
+        > svg {
+            font-size: 2rem;
+        }
+    }
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    &__link {
+        color: vars.$white;
+
+        &_active {
+            color: vars.$accent;
+        }
+    }
+
+    @media (min-width: vars.$xs) {
+        &__body {
+            position: fixed;
+            left: 0;
+            top: -100%;
+            width: 100%;
+            height: fit-content;
+            padding: 50px 0;
+            overflow: auto;
+
+            background-color: vars.$primary;
+            transition: top .8s ease;
+
+            &_open {
+                top: 70px;
+                transition: top .5s ease;
+                box-shadow: vars.$header-box-shadow;
+            }
+        }
+
+        &__list {
+            row-gap: 20px;
+            flex-direction: column;
+        }
+
+        &__link {
+            font-weight: 500;
+            font-size: 1.875rem;
+        }
+    }
+
+
+    @media (min-width: vars.$lg) {
+        &__icon {
+            display: none;
+        }
+
+        &__body {
+            position: static;
+            height: auto;
+            width: fit-content;
+            padding: 0;
+        }
+
+        &__list {
+            column-gap: 30px;
+            flex-direction: row;
+        }
+
+        &__link {
+            font-size: 1rem;
+            transition: color .3s ease;
+
+            &:hover {
+                color: vars.$accent;
+            }
+
+            &:hover {
+                transition: color .3s ease;
+            }
+        }
+    }
+}
