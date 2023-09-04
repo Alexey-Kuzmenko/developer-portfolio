@@ -1,0 +1,48 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Header {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    padding: calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320)));
+    z-index: 10;
+    box-shadow: vars.$header-box-shadow;
+    background-color: vars.$primary;
+
+    &__logo {
+        z-index: 10;
+    }
+
+    &__logoText {
+        display: none;
+    }
+
+    &__innerFlexContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    @media (min-width: vars.$md) {
+
+        &__logo {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            column-gap: 10px;
+
+
+            height: min-content;
+
+            font-weight: 500;
+            color: vars.$white;
+            text-transform: uppercase;
+        }
+
+        &__logoText {
+            display: block;
+        }
+    }
+}

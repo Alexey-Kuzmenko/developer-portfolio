@@ -2,7 +2,7 @@ import styles from './globals.module.scss';
 import '../scss/base/_reset.scss';
 
 import ThemeRegistry from '@/theme/ThemeRegistry';
-import { Container } from '@/layout';
+import { Container, Header } from '@/layout';
 
 import type { Metadata } from 'next';
 
@@ -25,7 +25,8 @@ export default function RootLayout({
 
       <ThemeRegistry>
         <body className={styles.Body}>
-          {/* Header */}
+
+          <Header />
 
           <main>
             <Container>
@@ -34,6 +35,7 @@ export default function RootLayout({
           </main>
 
           {/* Footer */}
+
         </body>
       </ThemeRegistry>
     </html>
