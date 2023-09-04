@@ -11,6 +11,11 @@ const nunitoSans = Nunito_Sans({ weight: ['400', '500', '700'], subsets: ['latin
 const themeOptions: ThemeOptions = {
     typography: {
         fontFamily: nunitoSans.style.fontFamily,
+        h4: {
+            color: '#FFFF',
+            lineHeight: 'normal',
+            fontWeight: '700'
+        },
         body1: {
             fontSize: '1.125rem',
             color: '#7E8694'

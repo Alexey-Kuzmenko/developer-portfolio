@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 import { Container } from '..';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu } from '@/components';
+import { Menu } from '@/components/Menu/Menu';
 
 import Logo from '../../../public/assets/Logo.svg';
 
