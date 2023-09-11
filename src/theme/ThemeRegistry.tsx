@@ -23,12 +23,36 @@ const themeOptions: ThemeOptions = {
     },
     palette: {
         primary: {
-            main: '#F4F6FD',
-        }
+            main: '#040D1B',
+            light: '#071324',
+            contrastText: '#FFFF'
+        },
     },
+    components: {
+        MuiTextField: {
+            styleOverrides: {
+                root: {
+                    '& .MuiFilledInput-root': { borderBottom: '2px solid #fff' },
+                    '& .MuiFilledInput-root.Mui-focused': { borderBottom: '2px solid #3959FF' },
+                    '& .MuiFilledInput-root.Mui-error': { borderBottom: '2px solid #d32f2f' },
+                    '& .MuiInputLabel-root': { color: '#fff' },
+                    '& .MuiInputLabel-root.Mui-focused': {
+                        color: '#3959FF'
+                    },
+                    '& .MuiInputLabel-root.Mui-error': { color: '#d32f2f' },
+                    '& .MuiInputLabel-root.Mui-focused.Mui-error': {
+                        color: '#d32f2f'
+                    },
+                    textarea: { color: '#fff' },
+                    input: { color: '#fff' },
+                }
+
+            }
+        }
+    }
 };
 
-const theme = createTheme(themeOptions);
+export const theme = createTheme(themeOptions);
 
 export default function ThemeRegistry({ children }: { children: React.ReactNode }) {
     return (

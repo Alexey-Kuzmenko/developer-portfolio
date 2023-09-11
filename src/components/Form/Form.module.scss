@@ -1,0 +1,39 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Form {
+    display: flex;
+    padding: calc(25px + (70 - 110) * ((100vw - 320px) / (1440 - 320)));
+    height: auto;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 530px;
+    row-gap: 45px;
+
+    background-color: vars.$primary-light;
+    border-radius: vars.$border-radius;
+    box-shadow: vars.$header-box-shadow;
+
+    &__textFields {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        row-gap: 20px;
+        height: max-content;
+    }
+
+    @media (min-width: vars.$sm) {
+        & {
+            padding: 30px;
+        }
+    }
+
+    @media (min-width: vars.$md) {
+        & {
+            padding: 70px;
+        }
+    }
+}

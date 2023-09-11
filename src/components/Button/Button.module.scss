@@ -13,6 +13,13 @@
 
     font-weight: 500;
 
+    &:disabled {
+        background-color: vars.$grey;
+        border: 2px solid vars.$grey;
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
     &_contained {
         color: vars.$primary;
         background-color: vars.$dark-white;

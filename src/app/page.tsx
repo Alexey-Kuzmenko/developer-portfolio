@@ -1,8 +1,6 @@
 import { Typography } from '@mui/material';
 import styles from './page.module.scss';
-// ! testing MenuIcon
 import { TextAccent } from '@/components';
-
 
 export default function Home() {
   return (

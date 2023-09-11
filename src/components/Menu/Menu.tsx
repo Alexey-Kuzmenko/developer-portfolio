@@ -2,12 +2,11 @@
 
 import styles from './Menu.module.scss';
 
+import { useState } from 'react';
 import cn from 'classnames';
 import MenuLink from '@/models/menu-link.type';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-// ! testing
-import { useState } from 'react';
 import { MenuIcon } from '../MenuIcon/MenuIcon';
 
 interface MenuProps {
