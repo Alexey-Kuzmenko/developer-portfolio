@@ -70,7 +70,7 @@ export const Form = () => {
                     rules={{
                         required: { value: true, message: 'This field is required' },
                         pattern: { value: /[\S\s]+[\S]+/, message: 'Invalid value' },
-                        maxLength: { value: 15, message: 'The maximum length for this field is 15 characters' }
+                        maxLength: { value: 40, message: 'The maximum length for this field is 40 characters' }
                     }}
                     render={({ field }) =>
                         <TextField

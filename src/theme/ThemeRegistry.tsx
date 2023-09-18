@@ -38,7 +38,8 @@ const themeOptions: ThemeOptions = {
         },
         body1: {
             fontSize: '1.125rem',
-            color: '#7E8694'
+            color: '#7E8694',
+            textAlign: 'justify'
         },
     },
     palette: {

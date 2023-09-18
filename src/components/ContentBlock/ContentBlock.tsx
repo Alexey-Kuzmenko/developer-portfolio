@@ -11,9 +11,9 @@ interface ContentBlockProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElem
 
 export const ContentBlock: React.FC<ContentBlockProps> = ({ title, text, ...props }) => {
     return (
-        <div className={styles.ContentBlock} {...props}>
-            <Typography variant='h4' sx={{ marginBottom: '15px' }}>{title}</Typography>
-            <Typography variant='body2' sx={{ textAlign: 'justify' }}>{text}</Typography>
-        </div>
+        <section className={styles.ContentBlock} {...props}>
+            <Typography variant='h4' component='h2' className={styles.ContentBlock__title} sx={{ marginBottom: '15px' }}>{title}</Typography>
+            <Typography variant='body1'>{text}</Typography>
+        </section>
     );
 };
