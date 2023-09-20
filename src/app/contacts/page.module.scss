@@ -1,0 +1,5 @@
+@use '../../scss/utilities/placeholders';
+
+.ContactsPage {
+    @extend %page
+}

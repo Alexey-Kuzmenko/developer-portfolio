@@ -34,7 +34,7 @@ const themeOptions: ThemeOptions = {
         h5: {
             color: '#FFFF',
             lineHeight: 'normal',
-            fontWeight: '700'
+            fontWeight: '600'
         },
         body1: {
             fontSize: '1.125rem',
