@@ -2,10 +2,15 @@
 
 .IconBox {
     background-color: vars.$primary-light;
+    text-align: center;
 
     &_default {
-        padding: 40px 60px;
+        padding: 20px 40px;
         border-radius: vars.$border-radius;
+
+        @media (min-width: 375px) {
+            padding: 40px 60px;
+        }
     }
 
     &_small {

@@ -8,6 +8,7 @@
 .Main {
   // ? change on mixin
   padding-top: calc(110px + (160 - 110) * ((100vw - 320px) / (1440 - 320)));
+  padding-bottom: calc(50px + (100 - 110) * ((100vw - 320px) / (1440 - 320)));
   padding-right: calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320)));
   padding-left: calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320)));
 }
