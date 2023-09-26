@@ -1,12 +1,13 @@
 .Skills {
-    margin: 0 auto;
-    max-width: 1000px;
-    width: 100%;
-    grid-template-columns: 1fr;
-    gap: 50px;
     display: grid;
 
-    @media (min-width: 375px) {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    grid-template-columns: 1fr;
+    gap: 50px;
+
+    @media (width >= 375px) {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 

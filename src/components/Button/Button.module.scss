@@ -14,10 +14,11 @@
     font-weight: 500;
 
     &:disabled {
-        background-color: vars.$grey;
-        border: 2px solid vars.$grey;
-        pointer-events: none;
         cursor: not-allowed;
+        pointer-events: none;
+
+        border: 2px solid vars.$grey;
+        background-color: vars.$grey;
     }
 
     &_contained {

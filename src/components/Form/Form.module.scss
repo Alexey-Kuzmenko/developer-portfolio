@@ -2,27 +2,30 @@
 
 .Form {
     display: flex;
-    padding: calc(25px + (70 - 110) * ((100vw - 320px) / (1440 - 320)));
-    height: auto;
-    flex-flow: column nowrap;
     align-items: center;
+    flex-flow: column nowrap;
     justify-content: center;
+
     width: 100%;
     max-width: 530px;
-    row-gap: 45px;
+    height: auto;
+    padding: calc(25px + (70 - 110) * ((100vw - 320px) / (1440 - 320)));
+
+    border-radius: vars.$border-radius;
 
     background-color: vars.$primary-light;
-    border-radius: vars.$border-radius;
     box-shadow: vars.$header-box-shadow;
+    row-gap: 45px;
 
     &__textFields {
         display: flex;
-        flex-flow: column nowrap;
         align-items: center;
+        flex-flow: column nowrap;
         justify-content: center;
+
         width: 100%;
-        row-gap: 20px;
         height: max-content;
+        row-gap: 20px;
     }
 
     @media (min-width: vars.$sm) {

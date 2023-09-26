@@ -1,15 +1,17 @@
 @use '../../scss/utilities/variables' as vars;
 
 .Header {
-    width: 100%;
     position: fixed;
-    left: 0;
+    z-index: 10;
     top: 0;
     right: 0;
+    left: 0;
+
+    width: 100%;
     padding: calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320)));
-    z-index: 10;
-    box-shadow: vars.$header-box-shadow;
+
     background-color: vars.$primary;
+    box-shadow: vars.$header-box-shadow;
 
     &__logo {
         z-index: 10;
@@ -26,19 +28,21 @@
     }
 
     @media (min-width: vars.$md) {
-
         &__logo {
             display: flex;
             align-items: center;
+
             width: fit-content;
-            column-gap: 10px;
 
 
             height: min-content;
 
-            font-weight: 500;
-            color: vars.$white;
             text-transform: uppercase;
+
+            color: vars.$white;
+
+            font-weight: 500;
+            column-gap: 10px;
         }
 
         &__logoText {
