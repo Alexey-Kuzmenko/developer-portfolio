@@ -8,6 +8,10 @@
     gap: 50px;
 
     @media (width >= 375px) {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    @media (width >= 768px) {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 

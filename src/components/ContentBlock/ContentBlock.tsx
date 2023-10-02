@@ -6,7 +6,7 @@ import { Typography } from '@mui/material';
 
 interface ContentBlockProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     title: string
-    text: string
+    text?: string
 }
 
 export const ContentBlock: React.FC<ContentBlockProps> = ({ title, text, ...props }) => {

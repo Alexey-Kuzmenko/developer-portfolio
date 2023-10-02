@@ -10,7 +10,7 @@
 
         border-radius: vars.$border-radius;
 
-        @media (width >= 375px) {
+        @media (width >=vars.$md) {
             padding: 40px 60px;
         }
     }
@@ -24,7 +24,7 @@
 
         border-radius: 1.5rem;
 
-        @media (width >= 380px) {
+        @media (width >=380px) {
             display: flex;
         }
     }
@@ -32,6 +32,10 @@
     &__icon {
         color: vars.$white;
 
-        font-size: 9.375rem;
+        font-size: 7rem;
+
+        @media (width >=vars.$md) {
+            font-size: 9.375rem;
+        }
     }
 }

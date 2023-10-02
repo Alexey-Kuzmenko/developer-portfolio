@@ -9,12 +9,6 @@
 
     cursor: pointer;
     transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-    transition: .5s ease-in-out;
-    transform: rotate(0deg);
-    transform: rotate(0deg);
-    transform: rotate(0deg);
     transform: rotate(0deg);
 
     span {
@@ -27,12 +21,6 @@
         height: 3px;
 
         transition: .25s ease-in-out;
-        transition: .25s ease-in-out;
-        transition: .25s ease-in-out;
-        transition: .25s ease-in-out;
-        transform: rotate(0deg);
-        transform: rotate(0deg);
-        transform: rotate(0deg);
         transform: rotate(0deg);
 
         opacity: 1;
@@ -62,15 +50,9 @@
 
     &_open span:nth-child(2) {
         transform: rotate(45deg);
-        transform: rotate(45deg);
-        transform: rotate(45deg);
-        transform: rotate(45deg);
     }
 
     &_open span:nth-child(3) {
-        transform: rotate(-45deg);
-        transform: rotate(-45deg);
-        transform: rotate(-45deg);
         transform: rotate(-45deg);
     }
 

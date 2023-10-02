@@ -80,11 +80,9 @@
             font-size: 1rem;
 
             &:hover {
-                color: vars.$accent;
-            }
-
-            &:hover {
                 transition: color .3s ease;
+
+                color: vars.$accent;
             }
         }
     }
