@@ -5,3 +5,4 @@ export * from './Loader/Loader';
 export * from './ContentBlock/ContentBlock';
 export * from './IconBox/IconBox';
 export * from './Contacts/Contacts';
+export * from './Alert/Alert';
