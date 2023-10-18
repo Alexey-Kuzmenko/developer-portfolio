@@ -1,6 +1,6 @@
 import styles from './page.module.scss';
 
-import { Typography, Tooltip } from '@mui/material';
+import { Typography, Tooltip, Box } from '@mui/material';
 import { Button, ContentBlock, TextAccent } from '@/components';
 import { FlexContainer, Skills } from '@/layout';
 import Image from 'next/image';
@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 // ! testing
 import Photo from '../../public/assets/Photo_for_cv_2 1.svg';
-import WebImg from '../../public/Web_page_image.svg';
+import GitHubImg from '../../public/assets/GitHub image.svg';
 
 const text = `Hi, I'm Oleksii. I'm 20 years old. Nowadays, I'm studying in the 3rd year at DTEU
 (KNUTE) as Marketer. So far, I am a Front-end developer with no experience, but I
@@ -22,7 +22,10 @@ export default function Home() {
     <div className={styles.HomePage}>
 
       {/* About me */}
-      <Typography variant='h4' component='h1' sx={{ textAlign: 'center' }}>Hi there! My name is Oleksii and I'm <br />  <TextAccent>Front-end</TextAccent> developer.</Typography>
+      <Typography variant='h4' component='h1' sx={{ textAlign: 'center' }}>
+        Hi there! My name is Oleksii and I'm <br />  <TextAccent>Front-end</TextAccent> developer.
+      </Typography>
+
       <FlexContainer>
         <ContentBlock title='About me' text={text} />
         <Tooltip title='Oleksii Kuzmenko | Front-end developer'>
@@ -52,12 +55,21 @@ export default function Home() {
         </div>
         <Link href='http://localhost:3000/portfolio' target='_blank'>
           <Image
-            src={WebImg}
+            src={GitHubImg}
             alt='Web page'
           />
         </Link>
 
       </FlexContainer>
+
+      {/* Services */}
+      <Box component='section' sx={{ width: '100%', maxWidth: '800px' }}>
+        <Typography variant='h4' component='h2' sx={{ textAlign: 'center', marginBottom: '15px' }}>
+          Front-End development <TextAccent>solutions</TextAccent>
+        </Typography>
+
+        <Typography variant='body1' sx={{ textAlign: 'center' }}>You are looking for a beautiful, functional, and user-friendly website or web application? Get in touch with me today to learn more about my solutions and affordable prices.</Typography>
+      </Box>
 
     </div>
   );

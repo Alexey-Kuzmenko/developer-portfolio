@@ -4,4 +4,12 @@
 
     margin-top: 20px;
     column-gap: 20px;
+
+    &__icon {
+        display: none;
+
+        @media (width >=380px) {
+            display: block;
+        }
+    }
 }

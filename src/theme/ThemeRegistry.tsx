@@ -47,7 +47,7 @@ const themeOptions: ThemeOptions = {
             main: '#040D1B',
             light: '#071324',
             contrastText: '#FFFF'
-        },
+        }
     },
     components: {
         MuiTextField: {

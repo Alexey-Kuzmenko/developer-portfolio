@@ -23,7 +23,7 @@ export const Contacts: React.FC<ContactsProps> = ({ label, body, href, children,
     return (
         <div className={styles.Contacts} {...props}>
 
-            <Link href={label === 'Email' ? `mailto:${href}` : href} target='_blank'>
+            <Link href={label === 'Email' ? `mailto:${href}` : href} target='_blank' className={styles.Contacts__icon}>
                 {children}
             </Link>
 
