@@ -13,6 +13,20 @@
 
     font-weight: 500;
 
+    a {
+        text-decoration: none;
+
+        color: inherit;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+
+        border: 2px solid vars.$grey;
+        background-color: vars.$grey;
+    }
+
     &_contained {
         color: vars.$primary;
         background-color: vars.$dark-white;

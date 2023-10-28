@@ -1,0 +1,13 @@
+@use './variables' as vars;
+
+%page {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 50px;
+
+    @media (min-width: vars.$lg) {
+        row-gap: 100px;
+    }
+}

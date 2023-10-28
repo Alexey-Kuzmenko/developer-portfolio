@@ -1,0 +1,37 @@
+@use '../../scss/utilities/variables' as vars;
+
+.IconBox {
+    text-align: center;
+
+    background-color: vars.$primary-light;
+
+    &_default {
+        padding: 20px 40px;
+
+        border-radius: vars.$border-radius;
+
+        @media (width >=vars.$md) {
+            padding: 40px 60px;
+        }
+    }
+
+    &_small {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 20px;
+
+        border-radius: 1.5rem;
+    }
+
+    &__icon {
+        color: vars.$white;
+
+        font-size: 7rem;
+
+        @media (width >=vars.$md) {
+            font-size: 9.375rem;
+        }
+    }
+}
