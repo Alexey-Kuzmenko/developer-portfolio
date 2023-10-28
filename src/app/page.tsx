@@ -2,11 +2,12 @@ import styles from './page.module.scss';
 
 import { Typography, Tooltip, Box } from '@mui/material';
 import { Button, ContentBlock, TextAccent } from '@/components';
-import { FlexContainer, Skills } from '@/layout';
+// ! testing Solutions component
+import { FlexContainer, Skills, Solutions } from '@/layout';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// ! testing
+// ! temporary files
 import Photo from '../../public/assets/Photo_for_cv_2 1.svg';
 import GitHubImg from '../../public/assets/GitHub image.svg';
 
@@ -64,11 +65,15 @@ export default function Home() {
 
       {/* Services */}
       <Box component='section' sx={{ width: '100%', maxWidth: '800px' }}>
+
         <Typography variant='h4' component='h2' sx={{ textAlign: 'center', marginBottom: '15px' }}>
           Front-End development <TextAccent>solutions</TextAccent>
         </Typography>
 
         <Typography variant='body1' sx={{ textAlign: 'center' }}>You are looking for a beautiful, functional, and user-friendly website or web application? Get in touch with me today to learn more about my solutions and affordable prices.</Typography>
+
+        <Solutions />
+        <Button role='link' variant='contained' style={{ margin: '0 auto', marginTop: '30px', display: 'block' }} href='/contacts'>Contact</Button>
       </Box>
 
     </div>

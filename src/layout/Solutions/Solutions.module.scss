@@ -1,0 +1,28 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Solutions {
+    display: flex;
+    align-items: center;
+    row-gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    flex-direction: column;
+
+    @media (min-width: 425px) {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-around;
+        row-gap: 0;
+    }
+
+    &__flexWrapper {
+        width: 100%;
+        max-width: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        row-gap: 15px;
+    }
+}

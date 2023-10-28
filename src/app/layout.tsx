@@ -3,9 +3,9 @@ import '../scss/base/_reset.scss';
 
 import ThemeRegistry from '@/theme/ThemeRegistry';
 import { Container, Header } from '@/layout';
+import { Footer } from '@/layout/Footer/Footer';
 
 import type { Metadata } from 'next';
-
 
 export const metadata: Metadata = {
   title: 'Oleksii Kuzmenko | Front-End Developer',
@@ -34,7 +34,7 @@ export default function RootLayout({
             </Container>
           </main>
 
-          {/* Footer */}
+          <Footer />
 
         </body>
       </ThemeRegistry>

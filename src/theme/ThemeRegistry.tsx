@@ -47,6 +47,9 @@ const themeOptions: ThemeOptions = {
             main: '#040D1B',
             light: '#071324',
             contrastText: '#FFFF'
+        },
+        secondary: {
+            main: '#3959FF'
         }
     },
     components: {

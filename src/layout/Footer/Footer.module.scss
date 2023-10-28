@@ -1,0 +1,27 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Footer {
+    padding: 40px;
+
+    &__innerFlexContainer {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 15px;
+
+        @media (min-width: 425px) {
+            justify-content: space-between;
+            flex-direction: row;
+            row-gap: 0px;
+        }
+    }
+
+    &__icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 20px;
+    }
+}
