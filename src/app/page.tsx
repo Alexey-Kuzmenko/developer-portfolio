@@ -2,12 +2,11 @@ import styles from './page.module.scss';
 
 import { Typography, Tooltip, Box } from '@mui/material';
 import { Button, ContentBlock, TextAccent } from '@/components';
-// ! testing Solutions component
 import { FlexContainer, Skills, Solutions } from '@/layout';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// ! temporary files
+// * temporary files
 import Photo from '../../public/assets/Photo_for_cv_2 1.svg';
 import GitHubImg from '../../public/assets/GitHub image.svg';
 
@@ -18,7 +17,22 @@ development skills on my own, using Udemy courses, manuals and other
 alternative sources of information. My main competitive advantage is bits of
 knowledge of programming and marketing.`;
 
-export default function Home() {
+// ! Testing. This function fetching data from API
+async function fetchSkills() {
+  const response = fetch('http://localhost:3001/api/skills', {
+    next: {
+      revalidate: 60
+    }
+  });
+
+
+  const data = (await response).json();
+  return data;
+}
+
+export default async function Home() {
+  const skills = await fetchSkills();
+
   return (
     <div className={styles.HomePage}>
 
@@ -41,7 +55,7 @@ export default function Home() {
 
       {/* Skills */}
       <Typography variant='h4' component='h2' sx={{ textAlign: 'center' }}>Skills & technologies</Typography>
-      <Skills skills={[{ label: 'Next.js', iconClass: 'devicon-nextjs-original' }, { label: 'React', iconClass: 'devicon-react-original' }, { label: 'TypeScript', iconClass: 'devicon-typescript-plain' }, { label: 'Next.js', iconClass: 'devicon-nextjs-original' }, { label: 'React', iconClass: 'devicon-react-original' }, { label: 'TypeScript', iconClass: 'devicon-typescript-plain' }]} />
+      <Skills skills={skills} />
 
       {/* Projects */}
       <FlexContainer>
@@ -73,7 +87,9 @@ export default function Home() {
         <Typography variant='body1' sx={{ textAlign: 'center' }}>You are looking for a beautiful, functional, and user-friendly website or web application? Get in touch with me today to learn more about my solutions and affordable prices.</Typography>
 
         <Solutions />
+
         <Button role='link' variant='contained' style={{ margin: '0 auto', marginTop: '30px', display: 'block' }} href='/contacts'>Contact</Button>
+
       </Box>
 
     </div>
