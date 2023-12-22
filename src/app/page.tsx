@@ -9,6 +9,13 @@ import Link from 'next/link';
 // * temporary files
 import Photo from '../../public/assets/Photo_for_cv_2 1.svg';
 import GitHubImg from '../../public/assets/GitHub image.svg';
+import Skill from '@/models/skill.type';
+
+/* 
+  TODO:
+    - remove temporary files and text;
+    - add in functions which fetch data verification;
+*/
 
 const text = `Hi, I'm Oleksii. I'm 20 years old. Nowadays, I'm studying in the 3rd year at DTEU
 (KNUTE) as Marketer. So far, I am a Front-end developer with no experience, but I
@@ -17,21 +24,33 @@ development skills on my own, using Udemy courses, manuals and other
 alternative sources of information. My main competitive advantage is bits of
 knowledge of programming and marketing.`;
 
-// ! Testing. This function fetching data from API
-async function fetchSkills() {
+// ! testing. This function fetching data from API
+async function fetchSkills(): Promise<Skill[]> {
   const response = fetch('http://localhost:3001/api/skills', {
     next: {
       revalidate: 60
     }
   });
 
-
   const data = (await response).json();
+  return data;
+}
+
+// ! testing. This function fetching content from API
+async function fetchContent(lang: 'ua' | 'eng', type = 'about') {
+  const response = await fetch(`http://localhost:3001/api/content/${type}/${lang}`, {
+    next: {
+      revalidate: 60
+    }
+  });
+
+  const data = await response.json();
   return data;
 }
 
 export default async function Home() {
   const skills = await fetchSkills();
+  const about = await fetchContent('eng');
 
   return (
     <div className={styles.HomePage}>
