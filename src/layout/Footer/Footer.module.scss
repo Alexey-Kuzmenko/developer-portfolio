@@ -5,16 +5,17 @@
 
     &__innerFlexContainer {
         display: flex;
-        width: 100%;
         align-items: center;
         flex-direction: column;
         justify-content: center;
+
+        width: 100%;
         row-gap: 15px;
 
-        @media (min-width: 425px) {
-            justify-content: space-between;
+        @media (width >= 425px) {
             flex-direction: row;
-            row-gap: 0px;
+            justify-content: space-between;
+            row-gap: 0;
         }
     }
 
