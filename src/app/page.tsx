@@ -103,7 +103,9 @@ export default async function Home() {
           Front-End development <TextAccent>solutions</TextAccent>
         </Typography>
 
-        <Typography variant='body1' sx={{ textAlign: 'center' }}>You are looking for a beautiful, functional, and user-friendly website or web application? Get in touch with me today to learn more about my solutions and affordable prices.</Typography>
+        <Typography variant='body1' sx={{ textAlign: 'center' }}>
+          You are looking for a beautiful, functional, and user-friendly website or web application? Get in touch with me today to learn more about my solutions and affordable prices.
+        </Typography>
 
         <Solutions />
 

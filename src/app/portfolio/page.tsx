@@ -1,4 +1,8 @@
+import styles from './page.module.scss';
+
 import Project from '@/models/project.type';
+import { ProjectCard } from '@/components';
+import { Typography } from '@mui/material';
 
 const fetchProjects = async (): Promise<Project[]> => {
     const response = await fetch('http://localhost:3001/api/projects');
@@ -10,12 +14,31 @@ const fetchProjects = async (): Promise<Project[]> => {
 async function Portfolio() {
     const projects = await fetchProjects();
 
+    const renderProjects = (): JSX.Element[] => {
+        return projects.map(({ _id, name, description, previewImage, tags, link, repoLink }: Project) => {
+            return (
+                <ProjectCard
+                    key={_id}
+                    _id={_id}
+                    name={name}
+                    description={description}
+                    previewImage={previewImage}
+                    tags={tags}
+                    link={link}
+                    repoLink={repoLink}
+                />
+            );
+        });
+    };
+
     return (
-        <>
-            <h1>Portfolio page</h1>
-            {/* debug */}
-            {JSON.stringify(projects[0])}
-        </>
+        <div className={styles.ProjectsPage}>
+            <Typography variant='h4' component='h1'>Portfolio</Typography>
+
+            <div className={styles.ProjectsPage__innerGridContainer}>
+                {renderProjects()}
+            </div>
+        </div>
 
     );
 }

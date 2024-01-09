@@ -8,7 +8,6 @@
 
     border-radius: vars.$border-radius;
 
-    font-size: 1rem;
     font-weight: 700;
 
     &_blue {
@@ -34,5 +33,13 @@
     &_pink {
         color: vars.$pink;
         background: rgba($color: vars.$pink, $alpha: 30%);
+    }
+
+    @media (width >=vars.$xs) {
+        font-size: 0.75rem;
+    }
+
+    @media (width >=vars.$md) {
+        font-size: 1rem;
     }
 }
