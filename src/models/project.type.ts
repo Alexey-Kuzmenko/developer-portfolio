@@ -1,4 +1,9 @@
-export default interface Project {
+export interface Technology {
+    iconClass: string,
+    label: string
+}
+
+export default interface ProjectModel {
     _id: string
     name: string
     tags: Array<string>
@@ -8,4 +13,5 @@ export default interface Project {
     previewImage: string
     images?: Array<string>
     body?: string
+    technologies: Array<Technology>
 }

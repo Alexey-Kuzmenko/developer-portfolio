@@ -1,4 +1,4 @@
-export default interface Skill {
+export default interface SkillModel {
     _id: string
     slug: string
     label: string

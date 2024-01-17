@@ -8,7 +8,7 @@ import { Button, Tag } from '..';
 // * temporary files
 import ProjectImage from '../../../public/assets/Budget_app_image.svg';
 
-interface ProjectCardProps extends Omit<Project, 'body' | 'images'> { }
+interface ProjectCardProps extends Omit<Project, 'body' | 'images' | 'technologies'> { }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ _id, name, description, tags, link, repoLink, previewImage }) => {
 
