@@ -5,10 +5,19 @@ import { ProjectCard } from '@/components';
 import { Typography } from '@mui/material';
 
 const fetchProjects = async (): Promise<Project[]> => {
-    const response = await fetch('http://localhost:3001/api/projects');
-    const data = await response.json();
+    const response = await fetch('http://localhost:3001/api/projects', {
+        next: {
+            revalidate: 60
+        }
+    });
 
-    return data;
+    if (response.ok) {
+        const data = await response.json();
+        return data;
+    } else {
+        throw new Error(`${response.status} ${response.statusText}`);
+    }
+
 };
 
 async function Portfolio() {

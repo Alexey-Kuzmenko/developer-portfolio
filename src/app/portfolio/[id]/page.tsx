@@ -14,9 +14,7 @@ type ProjectProps = {
 
 async function fetchProject(id: string): Promise<Project> {
     const response = await fetch(`http://localhost:3001/api/projects/${id}`, {
-        next: {
-            revalidate: 60
-        }
+        cache: 'no-store',
     });
 
     if (response.ok) {

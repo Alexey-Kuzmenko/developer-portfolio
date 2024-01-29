@@ -10,6 +10,7 @@ import Link from 'next/link';
 import Photo from '../../public/assets/Photo_for_cv_2 1.svg';
 import GitHubImg from '../../public/assets/GitHub image.svg';
 import Skill from '@/models/skill.type';
+import ContentModel from '@/models/content.type';
 
 /* 
   TODO:
@@ -17,6 +18,7 @@ import Skill from '@/models/skill.type';
     - add in functions which fetch data verification;
 */
 
+// * temporary variable 
 const text = `Hi, I'm Oleksii. I'm 20 years old. Nowadays, I'm studying in the 3rd year at DTEU
 (KNUTE) as Marketer. So far, I am a Front-end developer with no experience, but I
 want to get it. My goal is self-development and career growth in IT. I learn
@@ -24,28 +26,36 @@ development skills on my own, using Udemy courses, manuals and other
 alternative sources of information. My main competitive advantage is bits of
 knowledge of programming and marketing.`;
 
-// ! testing. This function fetching data from API
 async function fetchSkills(): Promise<Skill[]> {
-  const response = fetch('http://localhost:3001/api/skills', {
+  const response = await fetch('http://localhost:3001/api/skills', {
     next: {
       revalidate: 60
     }
   });
 
-  const data = (await response).json();
-  return data;
+  if (response.ok) {
+    const data = (response).json();
+    return data;
+  } else {
+    throw new Error(`${response.status} ${response.statusText}`);
+  }
+
 }
 
-// ! testing. This function fetching content from API
-async function fetchContent(lang: 'ua' | 'eng', type = 'about') {
+async function fetchContent(lang: 'ua' | 'eng', type = 'about'): Promise<ContentModel> {
   const response = await fetch(`http://localhost:3001/api/content/${type}/${lang}`, {
     next: {
       revalidate: 60
     }
   });
 
-  const data = await response.json();
-  return data;
+  if (response.ok) {
+    const data = await response.json();
+    return data;
+  } else {
+    throw new Error(`${response.status} ${response.statusText}`);
+  }
+
 }
 
 export default async function Home() {
@@ -104,12 +114,19 @@ export default async function Home() {
         </Typography>
 
         <Typography variant='body1' sx={{ textAlign: 'center' }}>
-          You are looking for a beautiful, functional, and user-friendly website or web application? Get in touch with me today to learn more about my solutions and affordable prices.
+          You are looking for a beautiful, functional, and user-friendly website or web application?
+          Get in touch with me today to learn more about my solutions and affordable prices.
         </Typography>
 
         <Solutions />
 
-        <Button role='link' variant='contained' style={{ margin: '0 auto', marginTop: '30px', display: 'block' }} href='/contacts'>Contact</Button>
+        <Button
+          role='link'
+          variant='contained'
+          style={{ margin: '0 auto', marginTop: '30px', display: 'block' }}
+          href='/contacts'>
+          Contact
+        </Button>
 
       </Box>
 

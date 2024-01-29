@@ -13,9 +13,9 @@ interface ProjectCardProps extends Omit<Project, 'body' | 'images' | 'technologi
 export const ProjectCard: React.FC<ProjectCardProps> = ({ _id, name, description, tags, link, repoLink, previewImage }) => {
 
     const renderTags = (): JSX.Element[] => {
-        return tags.map((tag: string) => {
+        return tags.map((tag: string, i: number) => {
             return (
-                <Tag tagName={tag} />
+                <Tag tagName={tag} key={i} />
             );
         });
     };

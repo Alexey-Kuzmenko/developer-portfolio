@@ -10,7 +10,7 @@ export const Stack: React.FC<StackProps> = ({ technologies }) => {
     const renderListItems = (): JSX.Element[] => {
         return technologies.map(({ iconClass, label }: Technology) => {
             return (
-                <ul className={styles.Stack__item}>
+                <ul className={styles.Stack__item} key={label}>
                     <i className={iconClass}></i>
                     <p>{label}</p>
                 </ul>
