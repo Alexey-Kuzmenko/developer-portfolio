@@ -5,12 +5,24 @@ import { Stack, Button } from '@/components';
 
 // * temporary files
 import ProjectImg from '../../../../public/assets/Budget_app_image.svg';
+import { Metadata } from 'next';
 
 type ProjectProps = {
     params: {
         id: string
     }
 };
+
+export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
+    const project = await fetch(`http://localhost:3001/api/projects/${params.id}`);
+    const data: Project = await project.json();
+
+    return {
+        title: data.name,
+        description: data.description
+    };
+
+}
 
 async function fetchProject(id: string): Promise<Project> {
     const response = await fetch(`http://localhost:3001/api/projects/${id}`, {
