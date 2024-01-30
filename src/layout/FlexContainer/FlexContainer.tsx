@@ -1,12 +1,13 @@
+import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
 import styles from './FlexContainer.module.scss';
 
-interface FlexContainerProps {
+interface FlexContainerProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     children: React.ReactNode
 }
 
-export const FlexContainer: React.FC<FlexContainerProps> = ({ children }) => {
+export const FlexContainer: React.FC<FlexContainerProps> = ({ children, ...props }) => {
     return (
-        <div className={styles.FlexContainer}>
+        <div className={styles.FlexContainer} {...props}>
             {children}
         </div>
     );

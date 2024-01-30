@@ -5,7 +5,7 @@ import styles from './page.module.scss';
 import { useEffect, useState } from 'react';
 import { FlexContainer } from '@/layout';
 import { Form } from '@/components/Form/Form';
-import { ContentBlock, Alert } from '@/components';
+import { ContentBlock, Alert, Aos } from '@/components';
 import { ContactsGroup } from '@/components/ContactsGroup/ContactsGroup';
 import ContentModel from '@/models/content.type';
 
@@ -41,20 +41,21 @@ function Contacts() {
     };
 
     return (
-        <div className={styles.ContactsPage}>
-            <FlexContainer>
+        <>
+            <Aos />
+            <div className={styles.ContactsPage}>
+                <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    <div>
+                        <ContentBlock title='Get in touch' text={text} />
+                        <ContactsGroup onClickHandler={copyToClipboardHandler} />
+                    </div>
 
-                <div>
-                    <ContentBlock title='Get in touch' text={text} />
-                    <ContactsGroup onClickHandler={copyToClipboardHandler} />
-                </div>
+                    <Form />
+                </FlexContainer>
 
-                <Form />
-
-            </FlexContainer>
-
-            <Alert message='Copied to clipboard' type='info' open={showAlert} onClickHandler={hideAlertHandler} />
-        </div>
+                <Alert message='Copied to clipboard' type='info' open={showAlert} onClickHandler={hideAlertHandler} />
+            </div>
+        </>
     );
 }
 

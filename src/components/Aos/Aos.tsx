@@ -2,13 +2,16 @@
 
 import { useEffect } from 'react';
 import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-function Aos() {
+export const Aos = () => {
     useEffect(() => {
-        AOS.init();
+        AOS.init({
+            disable: 'mobile',
+            once: true,
+            duration: 1_000
+        });
     }, []);
 
     return <></>;
-}
-
-export default Aos;
+};

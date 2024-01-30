@@ -8,3 +8,4 @@ export * from './Contacts/Contacts';
 export * from './Alert/Alert';
 export * from './ProjectCard/ProjectCard';
 export * from './Stack/Stack';
+export * from './Aos/Aos';

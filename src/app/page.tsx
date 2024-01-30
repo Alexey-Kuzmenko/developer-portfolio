@@ -1,16 +1,16 @@
 import styles from './page.module.scss';
 
 import { Typography, Tooltip, Box } from '@mui/material';
-import { Button, ContentBlock, TextAccent } from '@/components';
+import { Aos, Button, ContentBlock, TextAccent } from '@/components';
 import { FlexContainer, Skills, Solutions } from '@/layout';
 import Image from 'next/image';
 import Link from 'next/link';
+import Skill from '@/models/skill.type';
+import ContentModel from '@/models/content.type';
 
 // * temporary files
 import Photo from '../../public/assets/Photo_for_cv_2 1.svg';
 import GitHubImg from '../../public/assets/GitHub image.svg';
-import Skill from '@/models/skill.type';
-import ContentModel from '@/models/content.type';
 
 /* 
   TODO:
@@ -63,73 +63,80 @@ export default async function Home() {
   const about = await fetchContent('eng');
 
   return (
-    <div className={styles.HomePage}>
+    <>
+      <Aos />
+      <div className={styles.HomePage}>
 
-      {/* About me */}
-      <Typography variant='h4' component='h1' sx={{ textAlign: 'center' }}>
-        Hi there! My name is Oleksii and I'm <br />  <TextAccent>Front-end</TextAccent> developer.
-      </Typography>
+        {/* About me */}
+        <Typography variant='h4' component='h1' sx={{ textAlign: 'center' }}>
+          Hi there! My name is Oleksii and I'm <br />  <TextAccent>Front-end</TextAccent> developer.
+        </Typography>
 
-      <FlexContainer>
-        <ContentBlock title='About me' text={text} />
-        <Tooltip title='Oleksii Kuzmenko | Front-end developer'>
-          <Image
-            src={Photo}
-            width={350}
-            height={350}
-            alt='Developer photo'
-          />
-        </Tooltip>
-      </FlexContainer>
+        <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
+          <ContentBlock title='About me' text={text} />
+          <figure>
+            <Tooltip title='Oleksii Kuzmenko | Front-end developer'>
+              <Image
+                src={Photo}
+                width={350}
+                height={350}
+                alt='Developer photo'
+              />
+            </Tooltip>
+          </figure>
+        </FlexContainer>
 
-      {/* Skills */}
-      <Typography variant='h4' component='h2' sx={{ textAlign: 'center' }}>Skills & technologies</Typography>
-      <Skills skills={skills} />
+        {/* Skills */}
+        <Typography variant='h4' component='h2' sx={{ textAlign: 'center' }} data-aos="fade-up" data-aos-anchor-placement="top-center">
+          Skills & technologies
+        </Typography>
+        <Skills skills={skills} data-aos="fade-up" data-aos-anchor-placement="top-center" />
 
-      {/* Projects */}
-      <FlexContainer>
-        <div>
-          <ContentBlock title='Take a look at the latest projects I have done' />
+        {/* Projects */}
+        <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
+          <div>
+            <ContentBlock title='Take a look at the latest projects I have done' />
 
-          <div className={styles.Controls}>
-            <Button variant='outlined' role='link' href='http://localhost:3000/portfolio'>Explore</Button>
-            <Button role='link' href='https://github.com/Alexey-Kuzmenko'>My GitHub</Button>
+            <div className={styles.Controls}>
+              <Button variant='outlined' role='link' href='http://localhost:3000/portfolio'>Explore</Button>
+              <Button role='link' href='https://github.com/Alexey-Kuzmenko'>My GitHub</Button>
+            </div>
+
           </div>
+          <Link href='http://localhost:3000/portfolio' target='_blank'>
+            <Image
+              src={GitHubImg}
+              alt='Web page'
+            />
+          </Link>
 
-        </div>
-        <Link href='http://localhost:3000/portfolio' target='_blank'>
-          <Image
-            src={GitHubImg}
-            alt='Web page'
-          />
-        </Link>
+        </FlexContainer>
 
-      </FlexContainer>
+        {/* Services */}
+        <Box component='section' sx={{ width: '100%', maxWidth: '800px' }} data-aos="fade-up" data-aos-anchor-placement="top-center">
 
-      {/* Services */}
-      <Box component='section' sx={{ width: '100%', maxWidth: '800px' }}>
+          <Typography variant='h4' component='h2' sx={{ textAlign: 'center', marginBottom: '15px' }}>
+            Front-End development <TextAccent>solutions</TextAccent>
+          </Typography>
 
-        <Typography variant='h4' component='h2' sx={{ textAlign: 'center', marginBottom: '15px' }}>
-          Front-End development <TextAccent>solutions</TextAccent>
-        </Typography>
+          <Typography variant='body1' sx={{ textAlign: 'center' }}>
+            You are looking for a beautiful, functional, and user-friendly website or web application?
+            Get in touch with me today to learn more about my solutions and affordable prices.
+          </Typography>
 
-        <Typography variant='body1' sx={{ textAlign: 'center' }}>
-          You are looking for a beautiful, functional, and user-friendly website or web application?
-          Get in touch with me today to learn more about my solutions and affordable prices.
-        </Typography>
+          <Solutions />
 
-        <Solutions />
+          <Button
+            role='link'
+            variant='contained'
+            style={{ margin: '0 auto', marginTop: '30px', display: 'block' }}
+            href='/contacts'>
+            Contact
+          </Button>
 
-        <Button
-          role='link'
-          variant='contained'
-          style={{ margin: '0 auto', marginTop: '30px', display: 'block' }}
-          href='/contacts'>
-          Contact
-        </Button>
+        </Box>
 
-      </Box>
-
-    </div>
+      </div>
+    </>
   );
 }

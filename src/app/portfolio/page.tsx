@@ -1,7 +1,7 @@
 import styles from './page.module.scss';
 
 import Project from '@/models/project.type';
-import { ProjectCard } from '@/components';
+import { Aos, ProjectCard } from '@/components';
 import { Typography } from '@mui/material';
 
 const fetchProjects = async (): Promise<Project[]> => {
@@ -41,14 +41,18 @@ async function Portfolio() {
     };
 
     return (
-        <div className={styles.ProjectsPage}>
-            <Typography variant='h4' component='h1'>Portfolio</Typography>
+        <>
+            <Aos />
+            <div className={styles.ProjectsPage}>
+                <Typography variant='h4' component='h1' data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    Portfolio
+                </Typography >
 
-            <div className={styles.ProjectsPage__innerGridContainer}>
-                {renderProjects()}
+                <div className={styles.ProjectsPage__innerGridContainer} data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    {renderProjects()}
+                </div>
             </div>
-        </div>
-
+        </>
     );
 }
 
