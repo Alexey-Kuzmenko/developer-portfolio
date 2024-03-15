@@ -5,29 +5,14 @@ import { Aos, Button, ContentBlock, TextAccent } from '@/components';
 import { FlexContainer, Skills, Solutions } from '@/layout';
 import Image from 'next/image';
 import Link from 'next/link';
-import Skill from '@/models/skill.type';
-import ContentModel from '@/models/content.type';
+import Skill from '@/models/skill.model';
+import { Content, ContentLang, ContentType } from '@/models/content.model';
 
-// * temporary files
-import Photo from '../../public/assets/Photo_for_cv_2 1.svg';
-import GitHubImg from '../../public/assets/GitHub image.svg';
-
-/* 
-  TODO:
-    - remove temporary files and text;
-    - add in functions which fetch data verification;
-*/
-
-// * temporary variable 
-const text = `Hi, I'm Oleksii. I'm 20 years old. Nowadays, I'm studying in the 3rd year at DTEU
-(KNUTE) as Marketer. So far, I am a Front-end developer with no experience, but I
-want to get it. My goal is self-development and career growth in IT. I learn
-development skills on my own, using Udemy courses, manuals and other
-alternative sources of information. My main competitive advantage is bits of
-knowledge of programming and marketing.`;
-
-async function fetchSkills(): Promise<Skill[]> {
-  const response = await fetch('http://localhost:3001/api/skills', {
+async function fetchSkills(apiUrl: string, apiKey: string): Promise<Skill[]> {
+  const response = await fetch(`${apiUrl}/skills`, {
+    headers: {
+      'Api-key': apiKey
+    },
     next: {
       revalidate: 60
     }
@@ -39,11 +24,13 @@ async function fetchSkills(): Promise<Skill[]> {
   } else {
     throw new Error(`${response.status} ${response.statusText}`);
   }
-
 }
 
-async function fetchContent(lang: 'ua' | 'eng', type = 'about'): Promise<ContentModel> {
-  const response = await fetch(`http://localhost:3001/api/content/${type}/${lang}`, {
+async function fetchContent(apiUrl: string, apiKey: string, lang: ContentLang): Promise<Content> {
+  const response = await fetch(`${apiUrl}/content/${ContentType.ABOUT}/${lang}`, {
+    headers: {
+      'Api-key': apiKey
+    },
     next: {
       revalidate: 60
     }
@@ -55,12 +42,22 @@ async function fetchContent(lang: 'ua' | 'eng', type = 'about'): Promise<Content
   } else {
     throw new Error(`${response.status} ${response.statusText}`);
   }
-
 }
 
 export default async function Home() {
-  const skills = await fetchSkills();
-  const about = await fetchContent('eng');
+  const API_KEY = process.env.API_KEY;
+  const API_URL = process.env.API_URL;
+
+  if (!API_KEY) {
+    throw new Error('API KEY is not defined');
+  }
+
+  if (!API_URL) {
+    throw new Error('API URL is not defined');
+  }
+
+  const skills = await fetchSkills(API_URL, API_KEY);
+  const { title, body, image }: Content = await fetchContent(API_URL, API_KEY, 'eng');
 
   return (
     <>
@@ -73,11 +70,11 @@ export default async function Home() {
         </Typography>
 
         <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
-          <ContentBlock title='About me' text={text} />
+          <ContentBlock title={title} text={body} />
           <figure>
             <Tooltip title='Oleksii Kuzmenko | Front-end developer'>
               <Image
-                src={Photo}
+                src={image ? image : ''}
                 width={350}
                 height={350}
                 alt='Developer photo'
@@ -101,15 +98,16 @@ export default async function Home() {
               <Button variant='outlined' role='link' href='http://localhost:3000/portfolio'>Explore</Button>
               <Button role='link' href='https://github.com/Alexey-Kuzmenko'>My GitHub</Button>
             </div>
-
           </div>
+
           <Link href='http://localhost:3000/portfolio' target='_blank'>
             <Image
-              src={GitHubImg}
+              src='https://api.ok-dev.pp.ua/static/home-page/home-page_github_preview.svg'
               alt='Web page'
+              width={530}
+              height={300}
             />
           </Link>
-
         </FlexContainer>
 
         {/* Services */}

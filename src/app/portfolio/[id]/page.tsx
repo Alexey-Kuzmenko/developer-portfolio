@@ -1,11 +1,9 @@
 import styles from './page.module.scss';
-import Project from '@/models/project.type';
+
 import Image from 'next/image';
+import { ProjectModel } from '@/models/project.model';
 import { Stack, Button, Aos } from '@/components';
 import { Metadata } from 'next';
-
-// * temporary files
-import ProjectImg from '../../../../public/assets/Budget_app_image.svg';
 
 type ProjectProps = {
     params: {
@@ -14,18 +12,22 @@ type ProjectProps = {
 };
 
 export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
-    const project = await fetch(`http://localhost:3001/api/projects/${params.id}`);
-    const data: Project = await project.json();
+    const project = await fetch(`${process.env.API_URL}/${params.id}`, {
+        headers: { 'API-KEY': process.env.API_KEY ? process.env.API_KEY : '' }
+    });
+    const data: ProjectModel = await project.json();
 
     return {
         title: data.name,
         description: data.description
     };
-
 }
 
-async function fetchProject(id: string): Promise<Project> {
-    const response = await fetch(`http://localhost:3001/api/projects/${id}`, {
+async function fetchProject(apiUrl: string, apiKey: string, id: string): Promise<ProjectModel> {
+    const response = await fetch(`${apiUrl}/projects/${id}`, {
+        headers: {
+            'API-KEY': apiKey
+        },
         cache: 'no-store',
     });
 
@@ -38,7 +40,18 @@ async function fetchProject(id: string): Promise<Project> {
 }
 
 async function Project({ params: { id } }: ProjectProps) {
-    const project: Project = await fetchProject(id);
+    const API_KEY = process.env.API_KEY;
+    const API_URL = process.env.API_URL;
+
+    if (!API_KEY) {
+        throw new Error('API KEY is not defined');
+    }
+
+    if (!API_URL) {
+        throw new Error('API URL is not defined');
+    }
+
+    const project: ProjectModel = await fetchProject(API_URL, API_KEY, id);
 
     return (
         <>
@@ -48,8 +61,10 @@ async function Project({ params: { id } }: ProjectProps) {
 
                     <figure className={`${styles.ProjectPage__tile} ${styles.ProjectPage__image}`} data-aos="fade-right">
                         <Image
-                            src={ProjectImg}
-                            alt={project.previewImage}
+                            src={project.image}
+                            alt={project.name}
+                            width={600}
+                            height={574}
                         />
                     </figure>
 

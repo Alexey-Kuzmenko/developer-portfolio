@@ -4,8 +4,9 @@
 .ProjectPage {
     &__innerGridContainer {
         display: grid;
-        margin: 0 auto;
+
         width: 100%;
+        margin: 0 auto;
 
         @media (width >=vars.$xs) {
             grid-template-columns: 1fr;
@@ -19,11 +20,13 @@
 
         @media (width >=vars.$sm) {
             grid-template-columns: 550px;
+
             justify-content: center;
         }
 
         @media (width >=vars.$sm) {
             grid-template-columns: 550px;
+
             justify-content: center;
         }
 
@@ -37,38 +40,42 @@
     }
 
     &__tile {
-        border-radius: vars.$border-radius;
         padding: 30px;
+
+        border-radius: vars.$border-radius;
         background-color: vars.$primary-light;
     }
 
     &__tileTitle {
         color: vars.$white;
-        font-weight: 700;
+
         font-size: calc(24px + (30 - 24) * ((100vw - 320px) / (1440 - 320)));
+        font-weight: 700;
     }
 
     &__tileText {
-        font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1440 - 320)));
         text-align: justify;
+
+        font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (1440 - 320)));
         font-weight: 400;
         line-height: 1.563rem;
     }
 
     &__innerFlexContainer {
         display: flex;
-        flex-direction: column;
         align-items: center;
+        flex-direction: column;
         row-gap: 30px;
     }
 
     &__image {
         grid-area: img;
+
         margin: 0 auto;
 
         > img {
-            margin: 0 auto;
             max-width: 100%;
+            margin: 0 auto;
             object-fit: cover;
 
             @media (width >=vars.$xs) {
@@ -95,6 +102,7 @@
 
     &__bodyControls {
         align-self: flex-start;
+
         @extend %controls
     }
 

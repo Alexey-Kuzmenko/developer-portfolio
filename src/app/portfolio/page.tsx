@@ -1,11 +1,14 @@
 import styles from './page.module.scss';
 
-import Project from '@/models/project.type';
+import { ProjectModel } from '@/models/project.model';
 import { Aos, ProjectCard } from '@/components';
 import { Typography } from '@mui/material';
 
-const fetchProjects = async (): Promise<Project[]> => {
-    const response = await fetch('http://localhost:3001/api/projects', {
+const fetchProjects = async (apiUrl: string, apiKey: string): Promise<ProjectModel[]> => {
+    const response = await fetch(`${apiUrl}/projects`, {
+        headers: {
+            'Api-key': apiKey
+        },
         next: {
             revalidate: 60
         }
@@ -17,21 +20,31 @@ const fetchProjects = async (): Promise<Project[]> => {
     } else {
         throw new Error(`${response.status} ${response.statusText}`);
     }
-
 };
 
 async function Portfolio() {
-    const projects = await fetchProjects();
+    const API_KEY = process.env.API_KEY;
+    const API_URL = process.env.API_URL;
+
+    if (!API_KEY) {
+        throw new Error('API KEY is not defined');
+    }
+
+    if (!API_URL) {
+        throw new Error('API URL is not defined');
+    }
+
+    const projects = await fetchProjects(API_URL, API_KEY);
 
     const renderProjects = (): JSX.Element[] => {
-        return projects.map(({ _id, name, description, previewImage, tags, link, repoLink }: Project) => {
+        return projects.map(({ _id, name, description, image, tags, link, repoLink }: ProjectModel) => {
             return (
                 <ProjectCard
                     key={_id}
                     _id={_id}
                     name={name}
                     description={description}
-                    previewImage={previewImage}
+                    image={image}
                     tags={tags}
                     link={link}
                     repoLink={repoLink}

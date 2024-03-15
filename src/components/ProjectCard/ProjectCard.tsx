@@ -1,16 +1,13 @@
 import { Typography } from '@mui/material';
 import styles from './ProjectCard.module.scss';
-import Project from '@/models/project.type';
+import { ProjectModel } from '@/models/project.model';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Tag } from '..';
 
-// * temporary files
-import ProjectImage from '../../../public/assets/Budget_app_image.svg';
+interface ProjectCardProps extends Omit<ProjectModel, 'body' | 'technologies'> { }
 
-interface ProjectCardProps extends Omit<Project, 'body' | 'images' | 'technologies'> { }
-
-export const ProjectCard: React.FC<ProjectCardProps> = ({ _id, name, description, tags, link, repoLink, previewImage }) => {
+export const ProjectCard: React.FC<ProjectCardProps> = ({ _id, name, description, tags, link, repoLink, image }) => {
 
     const renderTags = (): JSX.Element[] => {
         return tags.map((tag: string, i: number) => {
@@ -26,9 +23,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ _id, name, description
             <Link href={`portfolio/${_id}`} className='ProjectCard__link'>
                 <figure>
                     <Image
-                        src={ProjectImage}
-                        alt={previewImage}
+                        src={image}
+                        alt={name}
                         className={styles.ProjectCard__img}
+                        width={500}
+                        height={400}
                     />
                 </figure>
 

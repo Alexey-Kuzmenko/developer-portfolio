@@ -1,5 +1,5 @@
 import styles from './Stack.module.scss';
-import { Technology } from '@/models/project.type';
+import { Technology } from '@/models/project.model';
 
 interface StackProps {
     technologies: Array<Technology>

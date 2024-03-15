@@ -7,17 +7,16 @@ import { FlexContainer } from '@/layout';
 import { Form } from '@/components/Form/Form';
 import { ContentBlock, Alert, Aos } from '@/components';
 import { ContactsGroup } from '@/components/ContactsGroup/ContactsGroup';
-import ContentModel from '@/models/content.type';
-
-// ! testing
-const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non diam enim. In faucibus sollicitudin justo quis sollicitudin. Nullam eget turpis non elit consectetur sagittis. Aliquam vel libero blandit, lobortis velit sed, pharetra odio. Duis ut dui metus. ';
+import { Content, ContentLang } from '@/models/content.model';
 
 function Contacts() {
     const [showAlert, setShowAlert] = useState<boolean>(false);
+    const [content, setContent] = useState<Content>();
 
     useEffect(() => {
-        async function fetchContent(lang: 'ua' | 'eng', type = 'contacts'): Promise<ContentModel> {
-            const response = await fetch(`http://localhost:3001/api/content/${type}/${lang}`);
+        async function fetchContent(lang: ContentLang): Promise<Content> {
+            const response = await fetch(`/api/content/?lang=${lang}`, {
+            });
 
             if (response.ok) {
                 const data = await response.json();
@@ -27,14 +26,8 @@ function Contacts() {
             }
         }
 
-        // ! debug
-        fetchContent('eng').then(res => console.log(res));
-
+        fetchContent('eng').then(res => setContent(res));
     }, []);
-
-    const copyToClipboardHandler = (): void => {
-        setShowAlert(true);
-    };
 
     const hideAlertHandler = (): void => {
         setShowAlert(false);
@@ -46,8 +39,8 @@ function Contacts() {
             <div className={styles.ContactsPage}>
                 <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
                     <div>
-                        <ContentBlock title='Get in touch' text={text} />
-                        <ContactsGroup onClickHandler={copyToClipboardHandler} />
+                        <ContentBlock title={content ? content.title : ''} text={content ? content.body : ''} />
+                        <ContactsGroup setShowAlert={setShowAlert} />
                     </div>
 
                     <Form />

@@ -1,6 +1,6 @@
 import styles from './Skills.module.scss';
 import { IconBox } from '@/components';
-import Skill from '@/models/skill.type';
+import Skill from '@/models/skill.model';
 import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
 
 interface SkillsProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement> {
