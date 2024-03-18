@@ -20,7 +20,9 @@ export async function GET(req: Request) {
 
     if (response.ok) {
         const data = await response.json();
-        return Response.json(data);
+        return new Response(JSON.stringify(data), {
+            status: response.status
+        });
     } else {
         return new Response(null, {
             status: response.status,
