@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     const data: reCaptchaResponse = await response.json();
 
     if (data.success) {
-        return Response.json(data);
+        return new Response(JSON.stringify(data));
     }
 
     if (!data.success) {
