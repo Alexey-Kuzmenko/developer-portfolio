@@ -28,6 +28,12 @@
         row-gap: 20px;
     }
 
+    &__captchaWrapper {
+        &_hidden {
+            display: none;
+        }
+    }
+
     @media (min-width: vars.$sm) {
         & {
             padding: 30px;

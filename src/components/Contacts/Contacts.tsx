@@ -11,14 +11,11 @@ interface ContactsProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElem
     label: string
     body: string
     href: string
+    copyToClipboardHandler: React.MouseEventHandler
     children: React.ReactNode
 }
 
-export const Contacts: React.FC<ContactsProps> = ({ label, body, href, children, ...props }) => {
-
-    const copyHandler = (body: string): void => {
-        navigator.clipboard.writeText(body);
-    };
+export const Contacts: React.FC<ContactsProps> = ({ label, body, href, children, copyToClipboardHandler, ...props }) => {
 
     return (
         <div className={styles.Contacts} {...props}>
@@ -29,7 +26,7 @@ export const Contacts: React.FC<ContactsProps> = ({ label, body, href, children,
 
             <Tooltip title='Click to copy'>
                 <div>
-                    <div onClick={() => copyHandler(body)}>
+                    <div onClick={copyToClipboardHandler}>
                         <Typography sx={{ fontWeight: 400, fontSize: '1rem', color: '#FFF' }}>{label}</Typography>
                         <Typography sx={{ fontWeight: 600, fontSize: '1rem', color: '#FFF', cursor: 'pointer' }}>{body}</Typography>
                     </div>

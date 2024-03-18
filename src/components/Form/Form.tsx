@@ -1,9 +1,14 @@
 'use client';
 
+import { useState } from 'react';
 import styles from './Form.module.scss';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Typography, TextField } from '@mui/material';
 import { Button } from '..';
+import ReCAPTCHA from 'react-google-recaptcha';
+import cn from 'classnames';
+import { reCaptchaResponse } from '@/models/reCaptcha-response.model';
+import { FormDataModel } from '@/models/form-data.model';
 
 interface FormValues {
     email: string
@@ -12,6 +17,13 @@ interface FormValues {
 }
 
 export const Form = () => {
+    const reCaptchaPublicKey = process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY;
+    const [isCaptchaValid, setIsCaptchaValid] = useState<boolean>(false);
+
+    if (!reCaptchaPublicKey) {
+        throw new Error('reCAPTCHA public key is not defined');
+    }
+
     const {
         control,
         formState: {
@@ -29,12 +41,44 @@ export const Form = () => {
         mode: 'onBlur'
     });
 
-    const submitFormHandler: SubmitHandler<FormValues> = ({ email, name, message }) => {
-        // ! debug
-        console.log(`Email: ${email}`);
-        console.log(`Name: ${name}`);
-        console.log(`Message: ${message}`);
+    const captchaHandler = async (token: string | null): Promise<void> => {
+        if (token) {
+            const response = await fetch('/api/captcha', {
+                method: 'POST',
+                body: JSON.stringify({
+                    response: token
+                })
+            });
+
+            if (response.ok) {
+                const data: reCaptchaResponse = await response.json();
+                setIsCaptchaValid(data.success);
+            } else {
+                throw new Error(`Status: ${response.status}, error: ${response.statusText}`);
+            }
+        }
+    };
+
+    const submitFormHandler: SubmitHandler<FormValues> = async ({ email, name, message }): Promise<void> => {
+        const formData: FormDataModel = {
+            email,
+            name,
+            message
+        };
+
         reset();
+        setIsCaptchaValid(false);
+
+        try {
+            await fetch('/api/order', {
+                method: 'POST',
+                body: JSON.stringify(formData)
+            });
+        } catch (error) {
+            if (error instanceof Error) {
+                throw new Error(error.message);
+            }
+        }
     };
 
     return (
@@ -109,10 +153,22 @@ export const Form = () => {
                         />
                     }
                 />
-
             </div>
 
-            <Button variant='contained' style={{ width: '100%' }} disabled={!isValid} type='submit'>Submit</Button>
+            <div className={cn(styles.Form__captchaWrapper, {
+                [styles.Form__captchaWrapper_hidden]: isValid === false
+            })}>
+                <ReCAPTCHA
+                    sitekey={reCaptchaPublicKey}
+                    theme='dark'
+                    size='normal'
+                    badge='inline'
+                    onChange={captchaHandler}
+                    onExpired={() => setIsCaptchaValid(false)}
+                />
+            </div>
+
+            <Button variant='contained' style={{ width: '100%' }} disabled={isValid && isCaptchaValid ? false : true} type='submit'>Submit</Button>
         </form>
     );
 };

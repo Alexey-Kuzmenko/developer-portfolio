@@ -11,3 +11,14 @@
         row-gap: 100px;
     }
 }
+
+%controls {
+    display: flex;
+    justify-content: center;
+
+    column-gap: 30px;
+
+    @media (min-width: vars.$lg) {
+        justify-content: flex-start;
+    }
+}

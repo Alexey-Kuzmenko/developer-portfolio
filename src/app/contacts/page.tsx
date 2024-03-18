@@ -1,53 +1,54 @@
 'use client';
 
-import { Form } from '@/components/Form/Form';
 import styles from './page.module.scss';
 
-import { useState } from 'react';
-import { ContentBlock, Alert } from '@/components';
+import { useEffect, useState } from 'react';
 import { FlexContainer } from '@/layout';
-import { IconBox, Contacts as ContactsBlock } from '@/components';
-
-// ! testing
-const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non diam enim. In faucibus sollicitudin justo quis sollicitudin. Nullam eget turpis non elit consectetur sagittis. Aliquam vel libero blandit, lobortis velit sed, pharetra odio. Duis ut dui metus. ';
+import { Form } from '@/components/Form/Form';
+import { ContentBlock, Alert, Aos } from '@/components';
+import { ContactsGroup } from '@/components/ContactsGroup/ContactsGroup';
+import { Content, ContentLang } from '@/models/content.model';
 
 function Contacts() {
     const [showAlert, setShowAlert] = useState<boolean>(false);
+    const [content, setContent] = useState<Content>();
 
-    const copyToClipboardHandler = (): void => {
-        setShowAlert(true);
-    };
+    useEffect(() => {
+        async function fetchContent(lang: ContentLang): Promise<Content> {
+            const response = await fetch(`/api/content/?lang=${lang}`, {
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                return data;
+            } else {
+                throw new Error(`${response.status} ${response.statusText}`);
+            }
+        }
+
+        fetchContent('eng').then(res => setContent(res));
+    }, []);
 
     const hideAlertHandler = (): void => {
         setShowAlert(false);
     };
 
     return (
-        <div className={styles.ContactsPage}>
-            <FlexContainer>
+        <>
+            <Aos />
+            <div className={styles.ContactsPage}>
+                <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
+                    <div>
+                        <ContentBlock title={content ? content.title : ''} text={content ? content.body : ''} />
+                        <ContactsGroup setShowAlert={setShowAlert} />
+                    </div>
 
-                <div>
-                    <ContentBlock title='Get in touch' text={text} />
+                    <Form />
+                </FlexContainer>
 
-                    <ContactsBlock label='Email' body='alexey.kuzmenko1101@gamil.com' href='alexey.kuzmenko1101@gamil.com' onClick={copyToClipboardHandler}>
-                        <IconBox size='small' iconType='email' />
-                    </ContactsBlock>
-
-                    <ContactsBlock label='Telegram' body='@Alesha_Kuzmenko' href='https://t.me/Alesha_Kuzmenko'>
-                        <IconBox size='small' iconType='telegram' />
-                    </ContactsBlock>
-
-                    <ContactsBlock label='LinkedIn' body='Oleksii Kuzmenko' href='alexey.kuzmenko1101@gamil.com'>
-                        <IconBox size='small' iconType='linkedIn' />
-                    </ContactsBlock>
-                </div>
-
-                <Form />
-
-            </FlexContainer>
-
-            <Alert message='Copied to clipboard' type='info' open={showAlert} onClickHandler={hideAlertHandler} />
-        </div>
+                <Alert message='Copied to clipboard' type='info' open={showAlert} onClickHandler={hideAlertHandler} />
+            </div>
+        </>
     );
 }
 

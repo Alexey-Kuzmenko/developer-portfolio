@@ -3,15 +3,9 @@
 
 .HomePage {
     .Controls {
-        display: flex;
-        justify-content: center;
-
         margin-top: 40px;
-        column-gap: 30px;
 
-        @media (min-width: vars.$lg) {
-            justify-content: flex-start;
-        }
+        @extend %controls
     }
 
     @extend %page;
