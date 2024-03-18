@@ -15,7 +15,9 @@ export async function POST(request: Request) {
 
     if (data.success) {
         return Response.json(data);
-    } else {
+    }
+
+    if (!data.success) {
         return new Response(null, {
             status: 400,
             statusText: data.errorCodes?.toString()
