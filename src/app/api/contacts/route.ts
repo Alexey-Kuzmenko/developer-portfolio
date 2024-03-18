@@ -1,5 +1,5 @@
 export async function GET() {
-    const API_KEY = process.env.API_KEY ? process.env.API_KEY : '';
+    const API_KEY = process.env.API_KEY;
 
     if (!API_KEY) {
         return new Response(null, {

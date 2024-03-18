@@ -1,7 +1,7 @@
 import { ContentType } from '@/models/content.model';
 
 export async function GET(req: Request) {
-    const API_KEY = process.env.API_KEY ? process.env.API_KEY : '';
+    const API_KEY = process.env.API_KEY;
     const { searchParams } = new URL(req.url);
     const contentLang = searchParams.get('lang');
 
