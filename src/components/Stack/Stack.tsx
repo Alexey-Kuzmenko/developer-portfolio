@@ -1,14 +1,14 @@
 import styles from './Stack.module.scss';
-import { Technology } from '@/models/project.model';
+import { ProjectTechnology } from '@/models/project.model';
 
 interface StackProps {
-    technologies: Array<Technology>
+    technologies: Array<ProjectTechnology>
 }
 
 export const Stack: React.FC<StackProps> = ({ technologies }) => {
 
     const renderListItems = (): JSX.Element[] => {
-        return technologies.map(({ iconClass, label }: Technology) => {
+        return technologies.map(({ iconClass, label }: ProjectTechnology) => {
             return (
                 <ul className={styles.Stack__item} key={label}>
                     <i className={iconClass}></i>
