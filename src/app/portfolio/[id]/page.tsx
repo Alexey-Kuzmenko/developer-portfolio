@@ -12,9 +12,10 @@ type ProjectProps = {
 };
 
 export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
-    const project = await fetch(`${process.env.API_URL}/${params.id}`, {
+    const project = await fetch(`${process.env.API_URL}/projects/${params.id}`, {
         headers: { 'API-KEY': process.env.API_KEY ? process.env.API_KEY : '' }
     });
+
     const data: ProjectModel = await project.json();
 
     return {

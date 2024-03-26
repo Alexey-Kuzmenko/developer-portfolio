@@ -95,12 +95,12 @@ export default async function Home() {
             <ContentBlock title='Take a look at the latest projects I have done' />
 
             <div className={styles.Controls}>
-              <Button variant='outlined' role='link' href='http://localhost:3000/portfolio'>Explore</Button>
+              <Button variant='outlined' role='link' href='/portfolio'>Explore</Button>
               <Button role='link' href='https://github.com/Alexey-Kuzmenko'>My GitHub</Button>
             </div>
           </div>
 
-          <Link href='http://localhost:3000/portfolio' target='_blank'>
+          <Link href='https://github.com/Alexey-Kuzmenko' target='_blank'>
             <Image
               src='https://api.ok-dev.pp.ua/static/home-page/home-page_github_preview.svg'
               alt='Web page'
