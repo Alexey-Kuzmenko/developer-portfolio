@@ -37,9 +37,10 @@
     }
 
     &_text {
+        padding: 5px 0 0;
+
         color: vars.$dark-white;
         border: none;
-        padding: 5px 0 0 0;
         background-color: transparent;
     }
 
@@ -70,6 +71,7 @@
         &_text {
             &:hover {
                 transition: all ease .4s;
+
                 color: vars.$accent;
             }
         }

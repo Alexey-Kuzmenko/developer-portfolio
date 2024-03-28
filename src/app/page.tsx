@@ -59,6 +59,15 @@ export default async function Home() {
   const skills = await fetchSkills(API_URL, API_KEY);
   const aboutMe: Content = await fetchContent(API_URL, API_KEY, ContentType.ABOUT, 'eng');
   const services: Content = await fetchContent(API_URL, API_KEY, ContentType.SERVICES, 'eng');
+  let linkToCV = '';
+
+  if (aboutMe.links) {
+    const link = aboutMe.links.find(link => link.label === 'CV');
+
+    if (link) {
+      linkToCV = link.href;
+    }
+  }
 
   return (
     <>
@@ -73,7 +82,7 @@ export default async function Home() {
         <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
           <div>
             <ContentBlock title={aboutMe.title} text={aboutMe.body} />
-            <Button variant='text' role='link' href='https://drive.google.com/file/d/1jSlOS5IZ4t1FuyzIbavnMdCP_EfgU31J/view?usp=sharing'>My CV</Button>
+            <Button variant='text' role='link' href={linkToCV}>My CV</Button>
           </div>
 
           <figure>
