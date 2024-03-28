@@ -26,8 +26,8 @@ async function fetchSkills(apiUrl: string, apiKey: string): Promise<Skill[]> {
   }
 }
 
-async function fetchContent(apiUrl: string, apiKey: string, lang: ContentLang): Promise<Content> {
-  const response = await fetch(`${apiUrl}/content/${ContentType.ABOUT}/${lang}`, {
+async function fetchContent(apiUrl: string, apiKey: string, contentType: ContentType, lang: ContentLang): Promise<Content> {
+  const response = await fetch(`${apiUrl}/content/${contentType}/${lang}`, {
     headers: {
       'Api-key': apiKey
     },
@@ -57,7 +57,17 @@ export default async function Home() {
   }
 
   const skills = await fetchSkills(API_URL, API_KEY);
-  const { title, body, image }: Content = await fetchContent(API_URL, API_KEY, 'eng');
+  const aboutMe: Content = await fetchContent(API_URL, API_KEY, ContentType.ABOUT, 'eng');
+  const services: Content = await fetchContent(API_URL, API_KEY, ContentType.SERVICES, 'eng');
+  let linkToCV = '';
+
+  if (aboutMe.links) {
+    const link = aboutMe.links.find(link => link.label === 'CV');
+
+    if (link) {
+      linkToCV = link.href;
+    }
+  }
 
   return (
     <>
@@ -70,11 +80,15 @@ export default async function Home() {
         </Typography>
 
         <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
-          <ContentBlock title={title} text={body} />
+          <div>
+            <ContentBlock title={aboutMe.title} text={aboutMe.body} />
+            <Button variant='text' role='link' href={linkToCV}>My CV</Button>
+          </div>
+
           <figure>
             <Tooltip title='Oleksii Kuzmenko | Front-end developer'>
               <Image
-                src={image ? image : ''}
+                src={aboutMe.image ? aboutMe.image : ''}
                 width={350}
                 height={350}
                 alt='Developer photo'
@@ -95,12 +109,12 @@ export default async function Home() {
             <ContentBlock title='Take a look at the latest projects I have done' />
 
             <div className={styles.Controls}>
-              <Button variant='outlined' role='link' href='http://localhost:3000/portfolio'>Explore</Button>
+              <Button variant='outlined' role='link' href='/portfolio'>Explore</Button>
               <Button role='link' href='https://github.com/Alexey-Kuzmenko'>My GitHub</Button>
             </div>
           </div>
 
-          <Link href='http://localhost:3000/portfolio' target='_blank'>
+          <Link href='https://github.com/Alexey-Kuzmenko' target='_blank'>
             <Image
               src='https://api.ok-dev.pp.ua/static/home-page/home-page_github_preview.svg'
               alt='Web page'
@@ -114,12 +128,11 @@ export default async function Home() {
         <Box component='section' sx={{ width: '100%', maxWidth: '800px' }} data-aos="fade-up" data-aos-anchor-placement="top-center">
 
           <Typography variant='h4' component='h2' sx={{ textAlign: 'center', marginBottom: '15px' }}>
-            Front-End development <TextAccent>solutions</TextAccent>
+            {services.title.substring(0, 21)} <TextAccent>{services.title.substring(services.title.length - 9)}</TextAccent>
           </Typography>
 
           <Typography variant='body1' sx={{ textAlign: 'center' }}>
-            You are looking for a beautiful, functional, and user-friendly website or web application?
-            Get in touch with me today to learn more about my solutions and affordable prices.
+            {services.body}
           </Typography>
 
           <Solutions />

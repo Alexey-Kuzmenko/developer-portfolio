@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
     children: React.ReactNode
-    variant?: 'contained' | 'outlined'
+    variant?: 'contained' | 'outlined' | 'text'
     role?: 'button' | 'link'
     href?: string
 }
@@ -15,7 +15,8 @@ export const Button: React.FC<ButtonProps> = ({ children, variant = 'contained',
     return (
         <button {...props} className={cn(styles.Button, {
             [styles.Button_contained]: variant === 'contained',
-            [styles.Button_outlined]: variant === 'outlined'
+            [styles.Button_outlined]: variant === 'outlined',
+            [styles.Button_text]: variant === 'text',
         })}>
             {role === 'link' && href ? <Link href={href} target='_blank' >{children}</Link> : children}
         </button >

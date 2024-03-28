@@ -35,6 +35,8 @@ function Contacts() {
 
     return (
         <>
+            <title>Oleksii Kuzmenko | Contacts</title>
+            <meta name='description' content='Development of web applications, landing pages and APIs for business. Oleksii Kuzmenko • front-end developer.' />
             <Aos />
             <div className={styles.ContactsPage}>
                 <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">

@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Oleksii Kuzmenko | Front-End Developer',
-  description: 'Oleksii Kuzmenko, a skilled front-end developer specializing in React, JavaScript, TypeScript, Next.js, and NestJS. Explore a portfolio of meticulously crafted websites, web apps, and landing pages that showcase creativity and technical prowess. Ready to elevate your online presence? Contact Oleksii today to discuss your next website or landing page project!',
+  description: 'Oleksii Kuzmenko is a skilled Front-end developer specializing in React, JavaScript, TypeScript, Next.js, and NestJS.',
 };
 
 export default function RootLayout({

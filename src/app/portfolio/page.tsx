@@ -3,6 +3,12 @@ import styles from './page.module.scss';
 import { ProjectModel } from '@/models/project.model';
 import { Aos, ProjectCard } from '@/components';
 import { Typography } from '@mui/material';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Oleksii Kuzmenko | Portfolio',
+    description: 'Learn more about Oleksii Kuzmenko\'s front-end developer portfolio right now! React • JavaScript • TypeScript • Next.js.'
+};
 
 const fetchProjects = async (apiUrl: string, apiKey: string): Promise<ProjectModel[]> => {
     const response = await fetch(`${apiUrl}/projects`, {
