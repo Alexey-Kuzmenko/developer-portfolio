@@ -1,4 +1,4 @@
-FROM node:20-alpine as base
+FROM arm64v8/node:20-alpine as base
 RUN apk add --no-cache g++ make py3-pip libc6-compat
 WORKDIR /app
 COPY package*.json ./
