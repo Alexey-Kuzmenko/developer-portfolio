@@ -1,6 +1,11 @@
 @use '../scss/utilities/variables' as vars;
 
 .Body {
-  background-color: vars.$primary;
   color: vars.$grey;
+  background-color: vars.$primary;
+}
+
+.Main {
+  // ? change on mixin
+  padding: calc(110px + (160 - 110) * ((100vw - 320px) / (1440 - 320))) calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320))) calc(50px + (100 - 110) * ((100vw - 320px) / (1440 - 320))) calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320)));
 }

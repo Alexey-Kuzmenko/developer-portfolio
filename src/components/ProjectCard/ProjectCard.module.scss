@@ -1,0 +1,40 @@
+@use '../../scss/utilities/placeholders';
+@use '../../scss/utilities/variables' as vars;
+
+
+.ProjectCard {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+
+    padding: 20px;
+
+    border-radius: vars.$border-radius;
+    background-color: vars.$primary-light;
+    row-gap: 24px;
+
+    &__img {
+        @media (width >=vars.$xs) {
+            height: 200px;
+        }
+
+        @media (width >=375px) {
+            height: auto;
+        }
+    }
+
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+
+        width: 100%;
+        margin-top: 24px;
+        gap: 10px;
+    }
+
+    &__controls {
+        justify-content: flex-start;
+
+        @extend %controls
+    }
+}

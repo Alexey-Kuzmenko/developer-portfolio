@@ -1,0 +1,12 @@
+@use '../../scss/utilities/variables' as vars;
+
+.FlexContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    width: 100%;
+    margin: 0 auto;
+    row-gap: 25px;
+}

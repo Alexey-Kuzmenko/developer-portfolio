@@ -1,0 +1,12 @@
+@use '../scss/utilities/placeholders';
+@use '../scss/utilities/variables' as vars;
+
+.HomePage {
+    .Controls {
+        margin-top: 40px;
+
+        @extend %controls
+    }
+
+    @extend %page;
+}

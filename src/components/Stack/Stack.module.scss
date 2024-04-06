@@ -1,0 +1,25 @@
+@use '../../scss//utilities/variables' as vars;
+
+.Stack {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+
+    list-style: none;
+    row-gap: 20px;
+
+    &__item {
+        display: flex;
+        align-items: center;
+
+        padding: 0;
+
+        color: vars.$white;
+
+        font-size: calc(24px + (30 - 24) * ((100vw - 320px) / (1440 - 320)));
+        font-weight: 700;
+        column-gap: 15px;
+    }
+
+}

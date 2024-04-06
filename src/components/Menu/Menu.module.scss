@@ -1,0 +1,89 @@
+@use '../../scss/utilities/variables' as vars;
+
+.Menu {
+    z-index: 3;
+
+    height: min-content;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    &__link {
+        color: vars.$white;
+
+        &_active {
+            color: vars.$accent;
+        }
+    }
+
+    @media (min-width: vars.$xs) {
+        &__body {
+            position: fixed;
+            top: -100%;
+            left: 0;
+
+            overflow: auto;
+
+            width: 100%;
+            height: fit-content;
+            padding: 50px 0;
+
+            transition: top .8s ease;
+
+            background-color: vars.$primary;
+
+            &_open {
+                top: 70px;
+
+                transition: top .5s ease;
+
+                box-shadow: vars.$header-box-shadow;
+            }
+        }
+
+        &__list {
+            row-gap: 20px;
+
+            flex-direction: column;
+        }
+
+        &__link {
+            font-size: 1.875rem;
+            font-weight: 500;
+        }
+    }
+
+
+    @media (min-width: vars.$lg) {
+        &__body {
+            position: static;
+
+            width: fit-content;
+            height: auto;
+            padding: 0;
+        }
+
+        &__list {
+            column-gap: 30px;
+
+            flex-direction: row;
+        }
+
+        &__link {
+            transition: color .3s ease;
+
+            font-size: 1rem;
+
+            &:hover {
+                transition: color .3s ease;
+
+                color: vars.$accent;
+            }
+        }
+    }
+}

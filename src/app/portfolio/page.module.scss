@@ -1,0 +1,20 @@
+@use '../../scss/utilities/placeholders';
+@use '../../scss/utilities/variables' as vars;
+
+.ProjectsPage {
+    &__innerGridContainer {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: 540px 540px;
+
+        @media (width >=vars.$xs) {
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr))
+        }
+
+        @media (width >=vars.$xl) {
+            grid-template-columns: repeat(2, 540px)
+        }
+    }
+
+    @extend %page;
+}

@@ -1,0 +1,9 @@
+@use '../../scss/utilities/variables' as vars;
+
+.TextAccent {
+    padding: 2px 5px;
+
+    color: vars.$accent;
+    border-radius: vars.$border-radius;
+    background: rgba($color: vars.$accent, $alpha: 30%);
+}
