@@ -1,6 +1,5 @@
 'use client';
 
-
 import { Button } from '@/components';
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/navigation';
