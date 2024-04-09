@@ -1,4 +1,4 @@
-FROM arm64v8/node:20-alpine as base
+FROM node:20-alpine as base
 RUN apk add --no-cache g++ make py3-pip libc6-compat
 WORKDIR /app
 COPY package*.json ./
@@ -7,6 +7,7 @@ EXPOSE 8080
 FROM base as builder
 WORKDIR /app
 COPY . .
+RUN npm install --force
 RUN npm run build
 
 
@@ -26,4 +27,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
 
-CMD ["npm", "start"]
+ENV PORT 8080
+
+CMD HOSTNAME="0.0.0.0" node server.js
+# CMD ["npm", "start"]
