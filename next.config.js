@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
+    // output: 'standalone',
     images: {
         formats: ['image/webp'],
         domains: ['api.ok-dev.pp.ua'],
