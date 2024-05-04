@@ -1,5 +1,25 @@
+# version: '3.8'
+# services:
+#   web:
+#     image: developer-portfolio
+#     container_name: developer-portfolio-web
+#     restart: always
+#     ports:
+#       - 8080:8080
+#     env_file: .env.local
+
 version: '3.8'
 services:
+  nginx:
+    image: nginx
+    container_name: nginx 
+    ports:
+      - 80:80
+#    environment:
+#      - NEXTJS_CONTAINER_IP=web
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+#      - nextjs-app-build:/app
   web:
     image: developer-portfolio
     container_name: developer-portfolio-web
@@ -7,3 +27,9 @@ services:
     ports:
       - 8080:8080
     env_file: .env.local
+    #volumes:
+    #  - nextjs-app-build:/app
+    depends_on:
+      - nginx
+#volumes:
+#  nextjs-app-build: # Define the named volume
