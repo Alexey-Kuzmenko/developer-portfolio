@@ -15,7 +15,3 @@ This app serves as my personal website. It's made up of two parts: a front-end
 - React hook form
 - Google reCAPTCHA
 - PM2
-
-<p align="center">	
-<image src="https://drive.google.com/uc?export=view&id=1Mbqd7wTH811s0Enfs5a9h8E7p7zKDgYh" alt="Logo" width="200">
-</p>
