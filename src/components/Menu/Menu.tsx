@@ -14,7 +14,6 @@ interface MenuProps {
 }
 
 export const Menu: React.FC<MenuProps> = ({ links }) => {
-    // ! testing
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
     const pathname = usePathname();
 
