@@ -4,6 +4,7 @@ import '../scss/base/_reset.scss';
 import ThemeRegistry from '@/theme/ThemeRegistry';
 import { Container, Header } from '@/layout';
 import { Footer } from '@/layout/Footer/Footer';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 import type { Metadata } from 'next';
 
@@ -25,7 +26,6 @@ export default function RootLayout({
 
       <ThemeRegistry>
         <body className={styles.Body}>
-
           <Header />
 
           <main className={styles.Main}>
@@ -35,8 +35,9 @@ export default function RootLayout({
           </main>
 
           <Footer />
-
         </body>
+
+        <GoogleAnalytics gaId={String(process.env.GA4_ID)} />
       </ThemeRegistry>
     </html>
   );
