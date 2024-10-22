@@ -25,7 +25,7 @@ export default function RootLayout({
       </head>
 
       <ThemeRegistry>
-        <body className={styles.Body}>
+        <body className={styles.Body} data-body-scroll="false">
           <Header />
 
           <main className={styles.Main}>

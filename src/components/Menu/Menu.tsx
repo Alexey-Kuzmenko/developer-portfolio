@@ -13,8 +13,11 @@ interface MenuProps {
     links: MenuLink[]
 }
 
+const body = document.body;
+
 export const Menu: React.FC<MenuProps> = ({ links }) => {
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
+    body.dataset.bodyScroll = String(!menuIsOpen);
     const pathname = usePathname();
 
     const onMenuIconClick = (): void => {

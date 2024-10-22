@@ -3,9 +3,12 @@
 .Body {
   color: vars.$grey;
   background-color: vars.$primary;
+
+  &[data-body-scroll="false"] {
+    overflow: hidden;
+  }
 }
 
 .Main {
-  // ? change on mixin
   padding: calc(110px + (160 - 110) * ((100vw - 320px) / (1440 - 320))) calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320))) calc(50px + (100 - 110) * ((100vw - 320px) / (1440 - 320))) calc(20px + (25 - 20) * ((100vw - 320px) / (1440 - 320)));
 }
