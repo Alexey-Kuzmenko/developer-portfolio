@@ -125,7 +125,7 @@ export default async function Home() {
         </FlexContainer>
 
         {/* Services */}
-        <Box component='section' sx={{ width: '100%', maxWidth: '800px' }} data-aos="fade-up" data-aos-anchor-placement="top-center">
+        <Box component='section' sx={{ width: '100%', maxWidth: '800px' }} data-aos="fade-up">
 
           <Typography variant='h4' component='h2' sx={{ textAlign: 'center', marginBottom: '15px' }}>
             {services.title.substring(0, 21)} <TextAccent>{services.title.substring(services.title.length - 9)}</TextAccent>

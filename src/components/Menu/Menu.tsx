@@ -2,7 +2,7 @@
 
 import styles from './Menu.module.scss';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import MenuLink from '@/models/menu-link.model';
 import Link from 'next/link';
@@ -16,6 +16,11 @@ interface MenuProps {
 export const Menu: React.FC<MenuProps> = ({ links }) => {
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
     const pathname = usePathname();
+
+    useEffect(() => {
+        const body = document.body;
+        body.dataset.bodyScroll = String(!menuIsOpen);
+    });
 
     const onMenuIconClick = (): void => {
         setMenuIsOpen((prevState) => !prevState);

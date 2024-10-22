@@ -27,7 +27,15 @@ function Contacts() {
         }
 
         fetchContent('eng').then(res => setContent(res));
-    }, []);
+    });
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setShowAlert(false);
+        }, 3_000);
+
+        return () => clearTimeout(timeout);
+    }, [showAlert]);
 
     const hideAlertHandler = (): void => {
         setShowAlert(false);
