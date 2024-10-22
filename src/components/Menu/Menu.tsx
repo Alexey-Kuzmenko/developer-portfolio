@@ -17,7 +17,6 @@ export const Menu: React.FC<MenuProps> = ({ links }) => {
     const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
     const pathname = usePathname();
 
-    // ! testing
     useEffect(() => {
         const body = document.body;
         body.dataset.bodyScroll = String(!menuIsOpen);
