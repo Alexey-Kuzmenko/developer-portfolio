@@ -27,7 +27,7 @@ function Contacts() {
         }
 
         fetchContent('eng').then(res => setContent(res));
-    });
+    }, []);
 
     useEffect(() => {
         const timeout = setTimeout(() => {
