@@ -1,0 +1,1 @@
+export type EnvFileKeys = 'NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY' | 'API_KEY' | 'API_URL';

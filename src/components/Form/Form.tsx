@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './Form.module.scss';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Typography, TextField } from '@mui/material';
 import { Button } from '..';
@@ -9,6 +8,9 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import cn from 'classnames';
 import { reCaptchaResponse } from '@/models/reCaptcha-response.model';
 import { FormDataModel } from '@/models/form-data.model';
+import getEnvVariable from '@/utils/getEnvVariable';
+
+import styles from './Form.module.scss';
 
 interface FormValues {
     email: string
@@ -17,12 +19,8 @@ interface FormValues {
 }
 
 export const Form = () => {
-    const reCaptchaPublicKey = process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY;
+    const reCaptchaPublicKey = getEnvVariable('NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY');
     const [isCaptchaValid, setIsCaptchaValid] = useState<boolean>(false);
-
-    if (!reCaptchaPublicKey) {
-        throw new Error('reCAPTCHA public key is not defined');
-    }
 
     const {
         control,
@@ -54,7 +52,7 @@ export const Form = () => {
                 const data: reCaptchaResponse = await response.json();
                 setIsCaptchaValid(data.success);
             } else {
-                throw new Error(`Status: ${response.status}, error: ${response.statusText}`);
+                throw new Error(`Status code: ${response.status}, error: ${response.statusText}`);
             }
         }
     };
@@ -168,7 +166,14 @@ export const Form = () => {
                 />
             </div>
 
-            <Button variant='contained' style={{ width: '100%' }} disabled={isValid && isCaptchaValid ? false : true} type='submit'>Submit</Button>
+            <Button
+                variant='contained'
+                style={{ width: '100%' }}
+                disabled={isValid && isCaptchaValid ? false : true}
+                type='submit'
+            >
+                Submit
+            </Button>
         </form>
     );
 };
