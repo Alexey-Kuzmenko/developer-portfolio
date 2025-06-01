@@ -11,9 +11,13 @@
   ],
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "@typescript-eslint/semi": ["warn"],
+    "@typescript-eslint/semi": [
+      "warn"
+    ],
     "@typescript-eslint/no-empty-interface": [
       "error",
       {
@@ -23,8 +27,20 @@
     "@typescript-eslint/no-inferrable-types": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
     "@typescript-eslint/no-unused-vars": "warn",
+    "semi": "off",
     "no-console": "warn",
     "no-alert": "error",
-    "quotes": ["warn", "single"]
+    "quotes": [
+      "warn",
+      "single"
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreRegExpLiterals": true
+      }
+    ]
   }
 }

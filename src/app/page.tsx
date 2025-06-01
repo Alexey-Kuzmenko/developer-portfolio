@@ -1,64 +1,19 @@
-import styles from './page.module.scss';
-
-import { Typography, Tooltip, Box } from '@mui/material';
-import { Aos, Button, ContentBlock, TextAccent } from '@/components';
-import { FlexContainer, Skills, Solutions } from '@/layout';
 import Image from 'next/image';
 import Link from 'next/link';
-import Skill from '@/models/skill.model';
-import { Content, ContentLang, ContentType } from '@/models/content.model';
 
-async function fetchSkills(apiUrl: string, apiKey: string): Promise<Skill[]> {
-  const response = await fetch(`${apiUrl}/skills`, {
-    headers: {
-      'Api-key': apiKey
-    },
-    next: {
-      revalidate: 60
-    }
-  });
+import { Typography, Tooltip, Box } from '@mui/material';
+import { FlexContainer, Skills, Solutions } from '@/layout';
+import { Aos, Button, ContentBlock, TextAccent } from '@/components';
 
-  if (response.ok) {
-    const data = (response).json();
-    return data;
-  } else {
-    throw new Error(`${response.status} ${response.statusText}`);
-  }
-}
+import { Content, ContentType } from '@/models/content.model';
+import { getContent, getSkills } from '@/services/api';
 
-async function fetchContent(apiUrl: string, apiKey: string, contentType: ContentType, lang: ContentLang): Promise<Content> {
-  const response = await fetch(`${apiUrl}/content/${contentType}/${lang}`, {
-    headers: {
-      'Api-key': apiKey
-    },
-    next: {
-      revalidate: 60
-    }
-  });
-
-  if (response.ok) {
-    const data = await response.json();
-    return data;
-  } else {
-    throw new Error(`${response.status} ${response.statusText}`);
-  }
-}
+import styles from './page.module.scss';
 
 export default async function Home() {
-  const API_KEY = process.env.API_KEY;
-  const API_URL = process.env.API_URL;
-
-  if (!API_KEY) {
-    throw new Error('API KEY is not defined');
-  }
-
-  if (!API_URL) {
-    throw new Error('API URL is not defined');
-  }
-
-  const skills = await fetchSkills(API_URL, API_KEY);
-  const aboutMe: Content = await fetchContent(API_URL, API_KEY, ContentType.ABOUT, 'eng');
-  const services: Content = await fetchContent(API_URL, API_KEY, ContentType.SERVICES, 'eng');
+  const aboutMe: Content = await getContent(ContentType.ABOUT, 'eng');
+  const services: Content = await getContent(ContentType.SERVICES, 'eng');
+  const skills = await getSkills();
   let linkToCV = '';
 
   if (aboutMe.links) {
@@ -98,7 +53,12 @@ export default async function Home() {
         </FlexContainer>
 
         {/* Skills */}
-        <Typography variant='h4' component='h2' sx={{ textAlign: 'center' }} data-aos="fade-up" data-aos-anchor-placement="top-center">
+        <Typography
+          variant='h4'
+          component='h2'
+          sx={{ textAlign: 'center' }}
+          data-aos="fade-up"
+          data-aos-anchor-placement="top-center">
           Skills & technologies
         </Typography>
         <Skills skills={skills} data-aos="fade-up" data-aos-anchor-placement="top-center" />
@@ -128,7 +88,8 @@ export default async function Home() {
         <Box component='section' sx={{ width: '100%', maxWidth: '800px' }} data-aos="fade-up">
 
           <Typography variant='h4' component='h2' sx={{ textAlign: 'center', marginBottom: '15px' }}>
-            {services.title.substring(0, 21)} <TextAccent>{services.title.substring(services.title.length - 9)}</TextAccent>
+            {services.title.substring(0, 21) + ' '}
+            <TextAccent>{services.title.substring(services.title.length - 9)}</TextAccent>
           </Typography>
 
           <Typography variant='body1' sx={{ textAlign: 'center' }}>

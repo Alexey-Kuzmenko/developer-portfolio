@@ -15,7 +15,7 @@ export const ContactsGroup: React.FC<ContactsGroupProps> = ({ setShowAlert }) =>
         async function fetchContacts(): Promise<ContactModel[]> {
             const response = await fetch('/api/contacts', {
                 next: {
-                    revalidate: 60
+                    revalidate: 3_600
                 }
             });
 
@@ -41,7 +41,11 @@ export const ContactsGroup: React.FC<ContactsGroupProps> = ({ setShowAlert }) =>
     const renderContacts = (): JSX.Element[] => {
         return contacts.map(({ _id, label, body, href, iconType }) => {
             return (
-                <Contacts label={label} body={body} href={href} copyToClipboardHandler={() => copyToClipboardHandler(body)} key={_id}>
+                <Contacts
+                    label={label}
+                    body={body}
+                    href={href}
+                    copyToClipboardHandler={() => copyToClipboardHandler(body)} key={_id}>
                     <IconBox size='small' iconType={iconType} />
                 </Contacts>
             );

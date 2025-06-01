@@ -1,12 +1,12 @@
-import styles from './globals.module.scss';
-import '../scss/base/_reset.scss';
-
-import ThemeRegistry from '@/theme/ThemeRegistry';
-import { Container, Header } from '@/layout';
-import { Footer } from '@/layout/Footer/Footer';
 import { GoogleAnalytics } from '@next/third-parties/google';
-
 import type { Metadata } from 'next';
+
+import { Footer } from '@/layout/Footer/Footer';
+import { Container, Header } from '@/layout';
+import '../scss/base/_reset.scss';
+import ThemeRegistry from '@/theme/ThemeRegistry';
+
+import styles from './globals.module.scss';
 
 export const metadata: Metadata = {
   title: 'Oleksii Kuzmenko | Front-End Developer',
@@ -21,7 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+        <link
+          rel="stylesheet"
+          type='text/css'
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
       </head>
 
       <ThemeRegistry>

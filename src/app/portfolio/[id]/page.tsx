@@ -1,9 +1,12 @@
-import styles from './page.module.scss';
-
+import { Metadata } from 'next';
 import Image from 'next/image';
+
 import { ProjectModel } from '@/models/project.model';
 import { Stack, Button, Aos } from '@/components';
-import { Metadata } from 'next';
+import { getProject } from '@/services/api';
+import getEnvVariable from '@/utils/getEnvVariable';
+
+import styles from './page.module.scss';
 
 type ProjectProps = {
     params: {
@@ -11,9 +14,14 @@ type ProjectProps = {
     }
 };
 
+
+
 export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
-    const project = await fetch(`${process.env.API_URL}/projects/${params.id}`, {
-        headers: { 'API-KEY': process.env.API_KEY ? process.env.API_KEY : '' }
+    const API_KEY = getEnvVariable('NEXT_API_KEY');
+    const API_URL = getEnvVariable('NEXT_API_URL');
+
+    const project = await fetch(`${API_URL}/projects/${params.id}`, {
+        headers: { 'API-KEY': API_KEY }
     });
 
     const data: ProjectModel = await project.json();
@@ -24,35 +32,9 @@ export async function generateMetadata({ params }: ProjectProps): Promise<Metada
     };
 }
 
-async function fetchProject(apiUrl: string, apiKey: string, id: string): Promise<ProjectModel> {
-    const response = await fetch(`${apiUrl}/projects/${id}`, {
-        headers: {
-            'API-KEY': apiKey
-        },
-        cache: 'no-store',
-    });
-
-    if (response.ok) {
-        return response.json();
-    } else {
-        throw new Error(response.statusText);
-    }
-
-}
 
 async function Project({ params: { id } }: ProjectProps) {
-    const API_KEY = process.env.API_KEY;
-    const API_URL = process.env.API_URL;
-
-    if (!API_KEY) {
-        throw new Error('API KEY is not defined');
-    }
-
-    if (!API_URL) {
-        throw new Error('API URL is not defined');
-    }
-
-    const project: ProjectModel = await fetchProject(API_URL, API_KEY, id);
+    const project: ProjectModel = await getProject(id);
 
     return (
         <>
@@ -60,7 +42,9 @@ async function Project({ params: { id } }: ProjectProps) {
             <div className={styles.ProjectPage}>
                 <div className={styles.ProjectPage__innerGridContainer}>
 
-                    <figure className={`${styles.ProjectPage__tile} ${styles.ProjectPage__image}`} data-aos="fade-right">
+                    <figure
+                        className={`${styles.ProjectPage__tile} ${styles.ProjectPage__image}`}
+                        data-aos="fade-right">
                         <Image
                             src={project.image}
                             alt={project.name}

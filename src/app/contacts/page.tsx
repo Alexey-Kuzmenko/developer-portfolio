@@ -15,9 +15,7 @@ function Contacts() {
 
     useEffect(() => {
         async function fetchContent(lang: ContentLang): Promise<Content> {
-            const response = await fetch(`/api/content/?lang=${lang}`, {
-            });
-
+            const response = await fetch(`/api/content/?lang=${lang}`);
             if (response.ok) {
                 const data = await response.json();
                 return data;
