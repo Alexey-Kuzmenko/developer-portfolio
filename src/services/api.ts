@@ -1,8 +1,8 @@
 import { Content, ContentLang, ContentType, } from '@/models/content.model';
 import SkillModel from '@/models/skill.model';
-import { ApiServiceErrors } from '@/constants/errors';
-import getEnvVariable from '@/utils/getEnvVariable';
 import { ProjectModel } from '@/models/project.model';
+import getEnvVariable from '@/utils/getEnvVariable';
+import { throwCustomError } from '@/utils/throwCustomError';
 
 const API_KEY = getEnvVariable('API_KEY');
 const API_URL = getEnvVariable('API_URL');
@@ -32,7 +32,7 @@ export async function getContent(type: ContentType, lang: ContentLang): Promise<
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiServiceErrors.GET_CONTENT_ERROR} ${error.message}`);
+            throwCustomError('getContent function', error.message);
         } else {
             throw new Error(String(error));
         }
@@ -65,7 +65,7 @@ export async function getSkills(): Promise<SkillModel[]> {
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiServiceErrors.GET_SKILLS_ERROR} ${error.message}`);
+            throwCustomError('getSkills function', error.message);
         } else {
             throw new Error(String(error));
         }
@@ -74,8 +74,10 @@ export async function getSkills(): Promise<SkillModel[]> {
 }
 
 export async function getAllProjects(): Promise<ProjectModel[]> {
+    const url = `${API_URL}/projects`;
+
     try {
-        const response = await fetch(`${API_URL}/projects`, {
+        const response = await fetch(url, {
             headers: {
                 'Api-key': API_KEY
             },
@@ -88,11 +90,15 @@ export async function getAllProjects(): Promise<ProjectModel[]> {
             const data = await response.json();
             return data;
         } else {
-            throw new Error(`${response.status} ${response.statusText}`);
+            throw new Error(`Failed to fetch projects! 
+                URL: ${url}, 
+                Status: ${response.status}, 
+                Status text: ${response.statusText}`
+            );
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiServiceErrors.GET_PROJECTS_ERROR} ${error.message}`);
+            throwCustomError('getAllProjects function', error.message);
         } else {
             throw new Error(String(error));
         }
@@ -100,8 +106,10 @@ export async function getAllProjects(): Promise<ProjectModel[]> {
 }
 
 export async function getProject(id: string): Promise<ProjectModel> {
+    const url = `${API_URL}/projects/${id}`;
+
     try {
-        const response = await fetch(`${API_URL}/projects/${id}`, {
+        const response = await fetch(url, {
             headers: {
                 'API-KEY': API_KEY
             },
@@ -113,11 +121,15 @@ export async function getProject(id: string): Promise<ProjectModel> {
         if (response.ok) {
             return response.json();
         } else {
-            throw new Error(response.statusText);
+            throw new Error(`Failed to fetch project! 
+                URL: ${url}, 
+                Status: ${response.status}, 
+                Status text: ${response.statusText}`
+            );
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiServiceErrors.GET_PROJECTS_ERROR} ${error.message}`);
+            throwCustomError('getProject function', error.message);
         } else {
             throw new Error(String(error));
         }

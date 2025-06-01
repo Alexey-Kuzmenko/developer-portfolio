@@ -1,5 +1,5 @@
-import { ApiRoutesErrors } from '@/constants/errors';
 import getEnvVariable from '@/utils/getEnvVariable';
+import { throwCustomError } from '@/utils/throwCustomError';
 
 export async function GET() {
     const API_KEY = getEnvVariable('API_KEY');
@@ -25,7 +25,7 @@ export async function GET() {
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiRoutesErrors.CONTACTS_ROUTE_ERROR} ${error.message}`);
+            throwCustomError('contacts API route', error.message);
         }
     }
 

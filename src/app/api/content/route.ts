@@ -1,6 +1,6 @@
-import { ApiRoutesErrors } from '@/constants/errors';
 import { ContentType } from '@/models/content.model';
 import getEnvVariable from '@/utils/getEnvVariable';
+import { throwCustomError } from '@/utils/throwCustomError';
 
 export async function GET(req: Request) {
     const API_KEY = getEnvVariable('API_KEY');
@@ -29,7 +29,7 @@ export async function GET(req: Request) {
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiRoutesErrors.CONTENT_ROUTE_ERROR} ${error.message}`);
+            throwCustomError('content API route', error.message);
         }
     }
 }

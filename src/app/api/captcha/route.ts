@@ -1,6 +1,6 @@
-import { ApiRoutesErrors } from '@/constants/errors';
 import { reCaptchaResponse } from '@/models/reCaptcha-response.model';
 import getEnvVariable from '@/utils/getEnvVariable';
+import { throwCustomError } from '@/utils/throwCustomError';
 
 export async function POST(request: Request) {
     const captchaResponse = await request.json();
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiRoutesErrors.CAPTCHA_ROUTE_ERROR} ${error.message}`);
+            throwCustomError('captcha API route', error.message);
         }
     }
 

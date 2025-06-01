@@ -3,12 +3,13 @@
 import { useState } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { Typography, TextField } from '@mui/material';
-import { Button } from '..';
 import ReCAPTCHA from 'react-google-recaptcha';
 import cn from 'classnames';
+
+import { Button } from '..';
 import { reCaptchaResponse } from '@/models/reCaptcha-response.model';
 import { FormDataModel } from '@/models/form-data.model';
-import getEnvVariable from '@/utils/getEnvVariable';
+import { RECAPTCHA_PUBLIC_KEY_IS_NOT_DEFINED } from '@/constants/errors';
 
 import styles from './Form.module.scss';
 
@@ -19,8 +20,12 @@ interface FormValues {
 }
 
 export const Form = () => {
-    const reCaptchaPublicKey = getEnvVariable('NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY');
+    const RECAPTCHA_PUBLIC_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY;
     const [isCaptchaValid, setIsCaptchaValid] = useState<boolean>(false);
+
+    if (!RECAPTCHA_PUBLIC_KEY) {
+        throw new Error(RECAPTCHA_PUBLIC_KEY_IS_NOT_DEFINED);
+    }
 
     const {
         control,
@@ -157,7 +162,7 @@ export const Form = () => {
                 [styles.Form__captchaWrapper_hidden]: isValid === false
             })}>
                 <ReCAPTCHA
-                    sitekey={reCaptchaPublicKey}
+                    sitekey={RECAPTCHA_PUBLIC_KEY}
                     theme='dark'
                     size='normal'
                     badge='inline'

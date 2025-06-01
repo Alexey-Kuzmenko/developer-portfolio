@@ -1,5 +1,5 @@
-import { ApiRoutesErrors } from '@/constants/errors';
 import getEnvVariable from '@/utils/getEnvVariable';
+import { throwCustomError } from '@/utils/throwCustomError';
 
 export async function POST(request: Request) {
     const API_URL = getEnvVariable('API_URL');
@@ -28,9 +28,7 @@ export async function POST(request: Request) {
         }
     } catch (error) {
         if (error instanceof Error) {
-            throw new Error(`${ApiRoutesErrors.CAPTCHA_ROUTE_ERROR} ${error.message}`);
+            throwCustomError('order API route', error.message);
         }
     }
-
-
 }
