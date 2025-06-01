@@ -4,8 +4,8 @@ import { throwCustomError } from '@/utils/throwCustomError';
 
 export async function POST(request: Request) {
     const captchaResponse = await request.json();
-    const API_URL = getEnvVariable('API_URL');
-    const API_KEY = getEnvVariable('API_KEY');
+    const API_URL = getEnvVariable('NEXT_API_URL');
+    const API_KEY = getEnvVariable('NEXT_API_KEY');
 
     try {
         const response = await fetch(`${API_URL}/captcha/verify`, {

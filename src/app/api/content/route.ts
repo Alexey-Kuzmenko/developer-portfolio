@@ -3,8 +3,8 @@ import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
 
 export async function GET(req: Request) {
-    const API_KEY = getEnvVariable('API_KEY');
-    const API_URL = getEnvVariable('API_URL');
+    const API_KEY = getEnvVariable('NEXT_API_KEY');
+    const API_URL = getEnvVariable('NEXT_API_URL');
 
     const { searchParams } = new URL(req.url);
     const contentLang = searchParams.get('lang');

@@ -4,8 +4,8 @@ import { ProjectModel } from '@/models/project.model';
 import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
 
-const API_KEY = getEnvVariable('API_KEY');
-const API_URL = getEnvVariable('API_URL');
+const API_KEY = getEnvVariable('NEXT_API_KEY');
+const API_URL = getEnvVariable('NEXT_API_URL');
 const DATA_REVALIDATION_TIME = 3_600;
 
 export async function getContent(type: ContentType, lang: ContentLang): Promise<Content> {

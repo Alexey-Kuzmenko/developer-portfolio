@@ -2,8 +2,8 @@ import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
 
 export async function POST(request: Request) {
-    const API_URL = getEnvVariable('API_URL');
-    const API_KEY = getEnvVariable('API_KEY');
+    const API_URL = getEnvVariable('NEXT_API_URL');
+    const API_KEY = getEnvVariable('NEXT_API_KEY');
     const formData = await request.json();
 
     try {

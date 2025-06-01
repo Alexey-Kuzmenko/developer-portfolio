@@ -17,8 +17,8 @@ type ProjectProps = {
 
 
 export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
-    const API_KEY = getEnvVariable('API_KEY');
-    const API_URL = getEnvVariable('API_URL');
+    const API_KEY = getEnvVariable('NEXT_API_KEY');
+    const API_URL = getEnvVariable('NEXT_API_URL');
 
     const project = await fetch(`${API_URL}/projects/${params.id}`, {
         headers: { 'API-KEY': API_KEY }
