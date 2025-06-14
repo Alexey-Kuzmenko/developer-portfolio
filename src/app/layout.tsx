@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 
 import { Footer } from '@/layout/Footer/Footer';
 import { Container, Header } from '@/layout';
-import '../scss/base/_reset.scss';
 import ThemeRegistry from '@/theme/ThemeRegistry';
-
-import styles from './globals.module.scss';
 import getEnvVariable from '@/utils/getEnvVariable';
+
+import '../scss/base/_reset.scss';
+import styles from './globals.module.scss';
 
 export const metadata: Metadata = {
   title: 'Oleksii Kuzmenko | Front-End Developer',
