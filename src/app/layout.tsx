@@ -7,11 +7,14 @@ import '../scss/base/_reset.scss';
 import ThemeRegistry from '@/theme/ThemeRegistry';
 
 import styles from './globals.module.scss';
+import getEnvVariable from '@/utils/getEnvVariable';
 
 export const metadata: Metadata = {
   title: 'Oleksii Kuzmenko | Front-End Developer',
   description: 'Oleksii Kuzmenko is a skilled Front-end developer specializing in React, JavaScript, TypeScript, Next.js, and NestJS.',
 };
+
+const GA4_ID = getEnvVariable('NEXT_GA4_ID');
 
 export default function RootLayout({
   children,
@@ -40,7 +43,7 @@ export default function RootLayout({
           <Footer />
         </body>
 
-        <GoogleAnalytics gaId={String(process.env.GA4_ID)} />
+        <GoogleAnalytics gaId={GA4_ID} />
       </ThemeRegistry>
     </html>
   );
