@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
 
@@ -28,5 +30,4 @@ export async function GET() {
             throwCustomError('contacts API route', error.message);
         }
     }
-
 }
