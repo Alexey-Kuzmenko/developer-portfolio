@@ -14,9 +14,7 @@ export const ContactsGroup: React.FC<ContactsGroupProps> = ({ setShowAlert }) =>
     useEffect(() => {
         async function fetchContacts(): Promise<ContactModel[]> {
             const response = await fetch('/api/contacts', {
-                next: {
-                    revalidate: 3_600
-                }
+                cache: 'no-store'
             });
 
             if (response.ok) {

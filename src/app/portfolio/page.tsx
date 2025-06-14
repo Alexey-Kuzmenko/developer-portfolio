@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Metadata } from 'next';
 import { Typography } from '@mui/material';
 import { Aos, ProjectCard } from '@/components';
