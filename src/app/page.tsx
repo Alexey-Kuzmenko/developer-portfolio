@@ -5,11 +5,12 @@ import Link from 'next/link';
 
 import { Typography, Tooltip, Box } from '@mui/material';
 import { FlexContainer, Skills, Solutions } from '@/layout';
-import { Aos, Button, ContentBlock, TextAccent } from '@/components';
+import { Aos, Button, ContentBlock, RichText, TextAccent } from '@/components';
 
 import { Content, ContentType } from '@/models/content.model';
 import { getContent, getSkills } from '@/services/api';
 
+import content from '../content/home-page.json';
 import styles from './page.module.scss';
 
 export default async function Home() {
@@ -33,22 +34,22 @@ export default async function Home() {
 
         {/* About me */}
         <Typography variant='h4' component='h1' sx={{ textAlign: 'center' }}>
-          Hi there! My name is Oleksii and I'm <br />  <TextAccent>Front-end</TextAccent> developer.
+          <RichText text={content.aboutMeTitle} components={[TextAccent]} />
         </Typography>
 
         <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
           <div>
             <ContentBlock title={aboutMe.title} text={aboutMe.body} />
-            <Button variant='text' role='link' href={linkToCV}>My CV</Button>
+            <Button variant='text' role='link' href={linkToCV}>{content.cvBtn}</Button>
           </div>
 
           <figure>
-            <Tooltip title='Oleksii Kuzmenko | Front-end developer'>
+            <Tooltip title={content.tooltipTitle}>
               <Image
                 src={aboutMe.image ? aboutMe.image : ''}
                 width={350}
                 height={350}
-                alt='Developer photo'
+                alt={content.devImageAlt}
               />
             </Tooltip>
           </figure>
@@ -61,25 +62,25 @@ export default async function Home() {
           sx={{ textAlign: 'center' }}
           data-aos="fade-up"
           data-aos-anchor-placement="top-center">
-          Skills & technologies
+          {content.skillsTitle}
         </Typography>
         <Skills skills={skills} data-aos="fade-up" data-aos-anchor-placement="top-center" />
 
         {/* Projects */}
         <FlexContainer data-aos="fade-up" data-aos-anchor-placement="top-center">
           <div>
-            <ContentBlock title='Take a look at the latest projects I have done' />
+            <ContentBlock title={content.projectsBlockTitle} />
 
             <div className={styles.Controls}>
-              <Button variant='outlined' role='link' href='/portfolio'>Explore</Button>
-              <Button role='link' href='https://github.com/Alexey-Kuzmenko'>My GitHub</Button>
+              <Button variant='outlined' role='link' href='/portfolio'>{content.exploreBtn}</Button>
+              <Button role='link' href='https://github.com/Alexey-Kuzmenko'>{content.gitHubBtn}</Button>
             </div>
           </div>
 
           <Link href='https://github.com/Alexey-Kuzmenko' target='_blank'>
             <Image
               src='https://api.ok-dev.pp.ua/static/home-page/home-page_github_preview.svg'
-              alt='Web page'
+              alt={content.gitHubPageAlt}
               width={530}
               height={300}
             />
@@ -105,7 +106,7 @@ export default async function Home() {
             variant='contained'
             style={{ margin: '0 auto', marginTop: '30px', display: 'block' }}
             href='/contacts'>
-            Contact
+            {content.contactBtn}
           </Button>
 
         </Box>

@@ -6,6 +6,7 @@ import { Stack, Button, Aos } from '@/components';
 import { getProject } from '@/services/api';
 import getEnvVariable from '@/utils/getEnvVariable';
 
+import content from '../../../content/project-page.json';
 import styles from './page.module.scss';
 
 type ProjectProps = {
@@ -55,7 +56,7 @@ async function Project({ params: { id } }: ProjectProps) {
 
                     <div className={`${styles.ProjectPage__tile} ${styles.ProjectPage__stack}`} data-aos="fade-left">
                         <div className={styles.ProjectPage__innerFlexContainer}>
-                            <h1 className={styles.ProjectPage__tileTitle}>Used technologies</h1>
+                            <h1 className={styles.ProjectPage__tileTitle}>{content.usedTechnologies}</h1>
                             <Stack technologies={project.technologies} />
                         </div>
                     </div>
@@ -68,8 +69,10 @@ async function Project({ params: { id } }: ProjectProps) {
                             <p className={styles.ProjectPage__tileText}>{project.body}</p>
 
                             <div className={styles.ProjectPage__bodyControls}>
-                                <Button variant='outlined' role='link' href={project.link}>Visit</Button>
-                                <Button variant='contained' role='link' href={project.repoLink}>GitHub</Button>
+                                <Button variant='outlined' role='link' href={project.link}>{content.visitBtn}</Button>
+                                <Button variant='contained' role='link' href={project.repoLink}>
+                                    {content.githubBtn}
+                                </Button>
                             </div>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ import styles from './Menu.module.scss';
 
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
-import MenuLink from '@/models/menu-link.model';
+import MenuLink from '@/types/menu-link.type';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MenuIcon } from '../MenuIcon/MenuIcon';
