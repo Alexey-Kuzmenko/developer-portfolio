@@ -8,7 +8,7 @@ import getEnvVariable from '@/utils/getEnvVariable';
 import seo from '../content/seo.json';
 
 import '../scss/base/_reset.scss';
-import styles from './globals.module.scss';
+import styles from "./globals.module.scss";
 
 const { home } = seo;
 
