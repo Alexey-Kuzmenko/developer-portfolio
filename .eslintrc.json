@@ -33,6 +33,14 @@
     "quotes": [
       "warn",
       "single"
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreComments": true,
+        "ignoreRegExpLiterals": true
+      }
     ]
   }
 }

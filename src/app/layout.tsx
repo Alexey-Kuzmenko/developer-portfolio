@@ -5,13 +5,16 @@ import { Footer } from '@/layout/Footer/Footer';
 import { Container, Header } from '@/layout';
 import ThemeRegistry from '@/theme/ThemeRegistry';
 import getEnvVariable from '@/utils/getEnvVariable';
+import seo from '../content/seo.json';
 
 import '../scss/base/_reset.scss';
 import styles from './globals.module.scss';
 
+const { home } = seo;
+
 export const metadata: Metadata = {
-  title: 'Oleksii Kuzmenko | Front-End Developer',
-  description: 'Oleksii Kuzmenko is a skilled Front-end developer specializing in React, JavaScript, TypeScript, Next.js, and NestJS.',
+  title: home.title,
+  description: home.description,
 };
 
 const GA4_ID = getEnvVariable('NEXT_GA4_ID');

@@ -5,12 +5,15 @@ import { Typography } from '@mui/material';
 import { Aos, ProjectCard } from '@/components';
 import { getAllProjects } from '@/services/api';
 import { ProjectModel } from '@/models/project.model';
+import seo from '../../content/seo.json';
 
 import styles from './page.module.scss';
 
+const { portfolio } = seo;
+
 export const metadata: Metadata = {
-    title: 'Oleksii Kuzmenko | Portfolio',
-    description: 'Learn more about Oleksii Kuzmenko\'s front-end developer portfolio right now! React • JavaScript • TypeScript • Next.js.'
+    title: portfolio.title,
+    description: portfolio.description
 };
 
 async function Portfolio() {

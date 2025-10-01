@@ -8,7 +8,7 @@ import cn from 'classnames';
 
 import { Button } from '..';
 import { reCaptchaResponse } from '@/models/reCaptcha-response.model';
-import { FormDataModel } from '@/models/form-data.model';
+import { FormDataModel } from '@/types/form-data.type';
 import { RECAPTCHA_PUBLIC_KEY_IS_NOT_DEFINED } from '@/constants/errors';
 
 import styles from './Form.module.scss';

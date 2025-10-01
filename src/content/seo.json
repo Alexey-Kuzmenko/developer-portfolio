@@ -1,0 +1,14 @@
+{
+  "home": {
+    "title": "Oleksii Kuzmenko | Front-End Developer",
+    "description": "Oleksii Kuzmenko is a skilled Front-end developer specializing in React, JavaScript, TypeScript, Next.js, and NestJS."
+  },
+  "portfolio": {
+    "title": "Oleksii Kuzmenko | Portfolio",
+    "description": "Learn more about Oleksii Kuzmenko's front-end developer portfolio right now! React • JavaScript • TypeScript • Next.js."
+  },
+  "contacts": {
+    "title": "Oleksii Kuzmenko | Contacts",
+    "description": "Development of web applications, landing pages and APIs for business. Oleksii Kuzmenko • Front-end developer."
+  }
+}
