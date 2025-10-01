@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
+import seo from '../../content/seo.json';
+
+const { contacts } = seo;
 
 export const metadata: Metadata = {
-    title: 'Oleksii Kuzmenko | Contacts',
-    description: 'Development of web applications, landing pages and APIs for business. Oleksii Kuzmenko • front-end developer.',
+    title: contacts.title,
+    description: contacts.description
 };
 
 export default function ContactsLayout({

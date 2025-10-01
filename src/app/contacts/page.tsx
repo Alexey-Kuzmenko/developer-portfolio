@@ -1,13 +1,14 @@
 'use client';
 
-import styles from './page.module.scss';
-
 import { useEffect, useState } from 'react';
 import { FlexContainer } from '@/layout';
 import { Form } from '@/components/Form/Form';
 import { ContentBlock, Alert, Aos } from '@/components';
 import { ContactsGroup } from '@/components/ContactsGroup/ContactsGroup';
 import { Content, ContentLang } from '@/models/content.model';
+
+import jsonContent from '../../content/contacts-page.json';
+import styles from './page.module.scss';
 
 function Contacts() {
     const [showAlert, setShowAlert] = useState<boolean>(false);
@@ -52,7 +53,12 @@ function Contacts() {
                     <Form />
                 </FlexContainer>
 
-                <Alert message='Copied to clipboard' type='info' open={showAlert} onClickHandler={hideAlertHandler} />
+                <Alert
+                    message={jsonContent.alertMessage}
+                    type='info'
+                    open={showAlert}
+                    onClickHandler={hideAlertHandler}
+                />
             </div>
         </>
     );
