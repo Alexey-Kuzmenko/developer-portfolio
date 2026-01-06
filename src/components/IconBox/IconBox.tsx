@@ -55,7 +55,15 @@ export const IconBox: React.FC<IconBoxProps> = ({ size = 'default', label, iconC
         >
             {iconClass ? <i className={`${iconClass} ${styles.IconBox__icon}`}></i> : icon ? icon : null}
 
-            {label ? <Typography variant='h5' component='h3' sx={{ marginTop: '20px', textAlign: 'center' }}>{label}</Typography> : null}
+            {label ?
+                <Typography
+                    variant='h5'
+                    component='h3'
+                    sx={{ marginTop: '20px', textAlign: 'center' }}>
+                    {label}
+                </Typography>
+                :
+                null}
         </div>
     );
 };

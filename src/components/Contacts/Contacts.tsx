@@ -15,7 +15,14 @@ interface ContactsProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElem
     children: React.ReactNode
 }
 
-export const Contacts: React.FC<ContactsProps> = ({ label, body, href, children, copyToClipboardHandler, ...props }) => {
+export const Contacts: React.FC<ContactsProps> = ({
+    label,
+    body,
+    href,
+    children,
+    copyToClipboardHandler,
+    ...props
+}) => {
 
     return (
         <div className={styles.Contacts} {...props}>
@@ -28,7 +35,9 @@ export const Contacts: React.FC<ContactsProps> = ({ label, body, href, children,
                 <div>
                     <div onClick={copyToClipboardHandler}>
                         <Typography sx={{ fontWeight: 400, fontSize: '1rem', color: '#FFF' }}>{label}</Typography>
-                        <Typography sx={{ fontWeight: 600, fontSize: '1rem', color: '#FFF', cursor: 'pointer' }}>{body}</Typography>
+                        <Typography sx={{ fontWeight: 600, fontSize: '1rem', color: '#FFF', cursor: 'pointer' }}>
+                            {body}
+                        </Typography>
                     </div>
                 </div>
             </Tooltip>
