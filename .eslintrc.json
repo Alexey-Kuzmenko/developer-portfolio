@@ -41,6 +41,7 @@
         "ignoreComments": true,
         "ignoreRegExpLiterals": true
       }
-    ]
+    ],
+    "eol-last": "warn"
   }
 }

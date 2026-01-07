@@ -1,0 +1,1 @@
+export const APP_STATUS_CHECK_HEADER_REGEX = /^true$/;

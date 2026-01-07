@@ -10,7 +10,9 @@ interface MenuIconProps {
 
 export const MenuIcon: React.FC<MenuIconProps> = ({ menuIsOpen, menuIconClickHandler }) => {
     return (
-        <div className={cn(styles.MenuIcon, { [styles.MenuIcon_open]: menuIsOpen === true })} onClick={menuIconClickHandler}>
+        <div
+            className={cn(styles.MenuIcon, { [styles.MenuIcon_open]: menuIsOpen === true })}
+            onClick={menuIconClickHandler}>
             <span></span>
             <span></span>
             <span></span>

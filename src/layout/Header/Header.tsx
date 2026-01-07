@@ -23,7 +23,11 @@ export const Header = () => {
                         <p className={styles.Header__logoText}><b>Oleksii</b> Kuzmenko</p>
                     </Link>
 
-                    <Menu links={[{ label: 'Home', href: '/' }, { label: 'Portfolio', href: '/portfolio' }, { label: 'Contacts', href: '/contacts' }]} />
+                    <Menu links={[
+                        { label: 'Home', href: '/' },
+                        { label: 'Portfolio', href: '/portfolio' },
+                        { label: 'Contacts', href: '/contacts' }
+                    ]} />
 
                 </div>
             </Container>
