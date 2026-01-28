@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { Typography } from '@mui/material';
 import styles from './ProjectCard.module.scss';
 import { ProjectModel } from '@/models/project.model';
