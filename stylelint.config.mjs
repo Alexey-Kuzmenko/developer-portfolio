@@ -1,5 +1,5 @@
 /** @type {import('stylelint').Config} */
-export default {
+const stylelintConfig = {
     extends: [
         'stylelint-config-standard-scss',
         'stylelint-order-config-standard'
@@ -9,3 +9,5 @@ export default {
         'selector-class-pattern': null
     }
 };
+
+export default stylelintConfig

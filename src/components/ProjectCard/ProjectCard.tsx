@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button, Tag } from '..';
 
-interface ProjectCardProps extends Omit<ProjectModel, 'body' | 'technologies'> { }
+type ProjectCardProps = Omit<ProjectModel, 'body' | 'technologies'>
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ _id, name, description, tags, link, repoLink, image }) => {
 
