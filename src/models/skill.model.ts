@@ -4,3 +4,5 @@ export interface SkillModel {
     label: string;
     iconClass: string;
 }
+
+export default SkillModel;
