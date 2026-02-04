@@ -1,5 +1,5 @@
 import { Content, ContentLang, ContentType, } from '@/models/content.model';
-import SkillModel from '@/models/skill.model';
+import { SkillModel } from '@/models/skill.model';
 import { ProjectModel } from '@/models/project.model';
 import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
