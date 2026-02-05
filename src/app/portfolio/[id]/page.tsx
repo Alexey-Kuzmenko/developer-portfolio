@@ -10,18 +10,17 @@ import content from '../../../content/project-page.json';
 import styles from './page.module.scss';
 
 type ProjectProps = {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 };
-
-
 
 export async function generateMetadata({ params }: ProjectProps): Promise<Metadata> {
     const API_KEY = getEnvVariable('NEXT_API_KEY');
     const API_URL = getEnvVariable('NEXT_API_URL');
+    const { id } = await params;
 
-    const project = await fetch(`${API_URL}/projects/${params.id}`, {
+    const project = await fetch(`${API_URL}/projects/${id}`, {
         headers: { 'API-KEY': API_KEY }
     });
 
@@ -33,8 +32,8 @@ export async function generateMetadata({ params }: ProjectProps): Promise<Metada
     };
 }
 
-
-async function Project({ params: { id } }: ProjectProps) {
+async function Project({ params }: ProjectProps) {
+    const { id } = await params;
     const project: ProjectModel = await getProject(id);
 
     return (

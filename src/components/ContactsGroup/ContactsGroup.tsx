@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import { IconBox, Contacts } from '..';
 import { ContactModel } from '@/models/contact.model';
 

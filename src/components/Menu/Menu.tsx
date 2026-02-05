@@ -2,7 +2,7 @@
 
 import styles from './Menu.module.scss';
 
-import { useEffect, useState } from 'react';
+import { JSX, useEffect, useState } from 'react';
 import cn from 'classnames';
 import MenuLink from '@/types/menu-link.type';
 import Link from 'next/link';

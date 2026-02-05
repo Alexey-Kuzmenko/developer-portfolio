@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import styles from './Stack.module.scss';
 import { ProjectTechnology } from '@/models/project.model';
 

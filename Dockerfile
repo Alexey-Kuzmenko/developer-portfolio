@@ -1,12 +1,13 @@
 # This Dockerfile is intended for development, not production
-FROM node:slim AS builder
-RUN corepack enable
+FROM node:24-slim AS builder
+
 WORKDIR /app
+
 COPY . .
 RUN yarn install --frozen-lockfile
 RUN yarn build
-FROM node:slim
-RUN corepack enable
+
+FROM node:24-slim
 
 WORKDIR /app
 COPY --from=builder /app/package.json package.json

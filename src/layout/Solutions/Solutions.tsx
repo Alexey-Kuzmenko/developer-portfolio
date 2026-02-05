@@ -18,8 +18,8 @@ export const Solutions = () => {
 
             <div className={styles.Solutions__flexWrapper}>
                 <IconBox size='small' iconType='api' />
-                <Typography component='h3' variant='body1' textAlign='center'>API's</Typography>
+                <Typography component='h3' variant='body1' textAlign='center'>API&apos;s</Typography>
             </div>
         </div>
     );
-}; 
+};

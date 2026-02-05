@@ -1,7 +1,8 @@
-import styles from './Skills.module.scss';
+import { DetailedHTMLProps, HtmlHTMLAttributes, JSX } from 'react';
 import { IconBox } from '@/components';
 import Skill from '@/models/skill.model';
-import { DetailedHTMLProps, HtmlHTMLAttributes } from 'react';
+
+import styles from './Skills.module.scss';
 
 interface SkillsProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     skills: Array<Skill>

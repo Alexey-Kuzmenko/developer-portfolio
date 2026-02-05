@@ -12,7 +12,7 @@ const parseNewline = (text: string) => {
             parsed.push(parts[i].trim());
         }
         if (i < parts.length - 1) {
-            parsed.push(<br />);
+            parsed.push(<br key={i} />);
         }
     }
 
@@ -39,7 +39,7 @@ export const RichText: React.FC<RichTextProps> = ({ text, components }) => {
             const componentText = content.includes('\\n') ? parseNewline(content) : content;
 
             result.push(
-                <Component>
+                <Component key={componentIndex}>
                     {componentText}
                 </Component>
             );

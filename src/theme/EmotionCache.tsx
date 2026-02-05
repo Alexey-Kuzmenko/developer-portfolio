@@ -51,7 +51,7 @@ export function NextAppDirEmotionCacheProvider(
             return null;
         }
         let styles = '';
-        // eslint-disable-next-line no-restricted-syntax
+
         for (const name of names) {
             styles += cache.inserted[name];
         }
