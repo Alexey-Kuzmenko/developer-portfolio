@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { Content, ContentLang } from '@alexey-kuzmenko/ok-apps-sdk';
 import { FlexContainer } from '@/layout';
 import { Form } from '@/components/Form/Form';
 import { ContentBlock, Alert, Aos } from '@/components';
 import { ContactsGroup } from '@/components/ContactsGroup/ContactsGroup';
-import { Content, ContentLang } from '@/models/content.model';
 
 import jsonContent from '../../content/contacts-page.json';
 import styles from './page.module.scss';

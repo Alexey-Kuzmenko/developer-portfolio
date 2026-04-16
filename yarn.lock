@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@alexey-kuzmenko/ok-apps-sdk@^1.2.1":
+  version "1.2.1"
+  resolved "https://npm.pkg.github.com/download/@alexey-kuzmenko/ok-apps-sdk/1.2.1/5705ae8d85aeed0d08981d188295cbdd40bb057f#5705ae8d85aeed0d08981d188295cbdd40bb057f"
+  integrity sha512-RFzvusAppVjZQnWPM5ax1d8FTWF1jhxbxwpX2XoijF8m4Gzru9f8Y1iMLln+ewZpLGMCsCclltk9mm/JVEwsYQ==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.27.1":
   version "7.27.1"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.27.1.tgz#200f715e66d52a23b221a9435534a91cc13ad5be"

@@ -7,7 +7,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import cn from 'classnames';
 
 import { Button } from '..';
-import { reCaptchaResponse } from '@/models/reCaptcha-response.model';
+import { reCaptchaResponse } from '@/types/reCaptcha-response.type';
 import { FormDataModel } from '@/types/form-data.type';
 import { RECAPTCHA_PUBLIC_KEY_IS_NOT_DEFINED } from '@/constants/errors';
 

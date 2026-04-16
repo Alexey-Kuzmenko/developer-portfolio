@@ -3,9 +3,9 @@ export const dynamic = 'force-dynamic';
 import { JSX } from 'react';
 import { Metadata } from 'next';
 import { Typography } from '@mui/material';
+import { ProjectModel } from '@alexey-kuzmenko/ok-apps-sdk';
 import { Aos, ProjectCard } from '@/components';
 import { getAllProjects } from '@/services/api';
-import { ProjectModel } from '@/models/project.model';
 import seo from '../../content/seo.json';
 
 import styles from './page.module.scss';

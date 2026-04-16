@@ -2,20 +2,20 @@ export const dynamic = 'force-dynamic';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Content } from '@alexey-kuzmenko/ok-apps-sdk';
 
 import { Typography, Tooltip, Box } from '@mui/material';
 import { FlexContainer, Skills, Solutions } from '@/layout';
 import { Aos, Button, ContentBlock, RichText, TextAccent } from '@/components';
 
-import { Content, ContentType } from '@/models/content.model';
 import { getContent, getSkills } from '@/services/api';
 
 import content from '../content/home-page.json';
 import styles from './page.module.scss';
 
 export default async function Home() {
-  const aboutMe: Content = await getContent(ContentType.ABOUT, 'eng');
-  const services: Content = await getContent(ContentType.SERVICES, 'eng');
+  const aboutMe: Content = await getContent('about', 'eng');
+  const services: Content = await getContent('services', 'eng');
   const skills = await getSkills();
   let linkToCV = '';
 

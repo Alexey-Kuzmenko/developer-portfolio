@@ -1,6 +1,6 @@
 import { JSX } from 'react';
+import { ProjectTechnology } from '@alexey-kuzmenko/ok-apps-sdk';
 import styles from './Stack.module.scss';
-import { ProjectTechnology } from '@/models/project.model';
 
 interface StackProps {
     technologies: Array<ProjectTechnology>
