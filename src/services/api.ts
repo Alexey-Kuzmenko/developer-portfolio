@@ -1,6 +1,4 @@
-import { Content, ContentLang, ContentType, } from '@/models/content.model';
-import SkillModel from '@/models/skill.model';
-import { ProjectModel } from '@/models/project.model';
+import { Content, ContentLang, ContentType, ProjectModel, SkillModel } from '@alexey-kuzmenko/ok-apps-sdk';
 import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
 

@@ -1,4 +1,4 @@
-import { reCaptchaResponse } from '@/models/reCaptcha-response.model';
+import { reCaptchaResponse } from '@/types/reCaptcha-response.type';
 import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
 

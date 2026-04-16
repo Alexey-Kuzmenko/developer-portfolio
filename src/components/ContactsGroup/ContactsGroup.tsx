@@ -1,8 +1,8 @@
 'use client';
 
 import { JSX, useEffect, useState } from 'react';
+import { ContactModel } from '@alexey-kuzmenko/ok-apps-sdk';
 import { IconBox, Contacts } from '..';
-import { ContactModel } from '@/models/contact.model';
 
 interface ContactsGroupProps {
     setShowAlert: (value: boolean) => void

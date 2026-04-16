@@ -1,10 +1,11 @@
 import { JSX } from 'react';
-import { Typography } from '@mui/material';
-import styles from './ProjectCard.module.scss';
-import { ProjectModel } from '@/models/project.model';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Typography } from '@mui/material';
+import { ProjectModel } from '@alexey-kuzmenko/ok-apps-sdk';
 import { Button, Tag } from '..';
+
+import styles from './ProjectCard.module.scss';
 
 type ProjectCardProps = Omit<ProjectModel, 'body' | 'technologies'>
 

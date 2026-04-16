@@ -1,11 +1,11 @@
 import { DetailedHTMLProps, HtmlHTMLAttributes, JSX } from 'react';
+import { SkillModel } from '@alexey-kuzmenko/ok-apps-sdk';
 import { IconBox } from '@/components';
-import Skill from '@/models/skill.model';
 
 import styles from './Skills.module.scss';
 
 interface SkillsProps extends DetailedHTMLProps<HtmlHTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    skills: Array<Skill>
+    skills: Array<SkillModel>
 }
 
 export const Skills: React.FC<SkillsProps> = ({ skills, ...props }) => {

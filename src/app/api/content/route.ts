@@ -1,4 +1,3 @@
-import { ContentType } from '@/models/content.model';
 import getEnvVariable from '@/utils/getEnvVariable';
 import { throwCustomError } from '@/utils/throwCustomError';
 
@@ -10,7 +9,7 @@ export async function GET(req: Request) {
     const contentLang = searchParams.get('lang');
 
     try {
-        const response = await fetch(`${API_URL}/content/${ContentType.CONTACTS}/${contentLang}`, {
+        const response = await fetch(`${API_URL}/content/contacts/${contentLang}`, {
             headers: {
                 'Api-key': API_KEY
             }

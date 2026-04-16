@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 
-import { ProjectModel } from '@/models/project.model';
+import { ProjectModel } from '@alexey-kuzmenko/ok-apps-sdk';
 import { Stack, Button, Aos } from '@/components';
 import { getProject } from '@/services/api';
 import getEnvVariable from '@/utils/getEnvVariable';

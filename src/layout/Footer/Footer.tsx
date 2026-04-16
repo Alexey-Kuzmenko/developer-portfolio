@@ -1,16 +1,17 @@
 'use client';
 
-import styles from './Footer.module.scss';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { ContactModel } from '@alexey-kuzmenko/ok-apps-sdk';
 
-import { Container } from '..';
 import { Typography } from '@mui/material';
 import { theme } from '@/theme/ThemeRegistry';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { ContactModel } from '@/models/contact.model';
+import { Container } from '..';
+
+import styles from './Footer.module.scss';
 
 interface FooterState {
     [key: string]: string
